@@ -1,0 +1,6 @@
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerRCrackingTheCodingI\bin\Debug\HackerRCrackingTheCodingI.exe.config
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerRCrackingTheCodingI\bin\Debug\HackerRCrackingTheCodingI.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerRCrackingTheCodingI\bin\Debug\HackerRCrackingTheCodingI.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerRCrackingTheCodingI\obj\Debug\HackerRCrackingTheCodingI.csprojResolveAssemblyReference.cache
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerRCrackingTheCodingI\obj\Debug\HackerRCrackingTheCodingI.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerRCrackingTheCodingI\obj\Debug\HackerRCrackingTheCodingI.pdb

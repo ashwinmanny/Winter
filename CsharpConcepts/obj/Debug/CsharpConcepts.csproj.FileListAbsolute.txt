@@ -1,0 +1,6 @@
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpConcepts\obj\Debug\CsharpConcepts.csprojResolveAssemblyReference.cache
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpConcepts\bin\Debug\CsharpConcepts.exe.config
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpConcepts\bin\Debug\CsharpConcepts.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpConcepts\bin\Debug\CsharpConcepts.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpConcepts\obj\Debug\CsharpConcepts.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpConcepts\obj\Debug\CsharpConcepts.pdb

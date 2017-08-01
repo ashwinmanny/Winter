@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winter", "Winter\Winter.csproj", "{CBE26161-7842-4466-BE67-45DE62ABF126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerR", "HackerR\HackerR.csproj", "{5C33F760-B3BD-49AD-A0E9-06DA751237AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66F1D70E-220B-4C6B-9BFB-706BA477C140}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpDataStructures", "CsharpDataStructures\CsharpDataStructures.csproj", "{AAE7724B-070C-4B7E-8291-C0B1C04FE149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerRCrackingTheCodingI", "HackerRCrackingTheCodingI\HackerRCrackingTheCodingI.csproj", "{D0B58C02-BB01-42CD-B46D-5E91F04ED8C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpOOConcepts", "CsharpConcepts\CsharpOOConcepts.csproj", "{74BE0C64-733D-4133-AB21-1D33BFB82A06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBE26161-7842-4466-BE67-45DE62ABF126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE26161-7842-4466-BE67-45DE62ABF126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE26161-7842-4466-BE67-45DE62ABF126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE26161-7842-4466-BE67-45DE62ABF126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C33F760-B3BD-49AD-A0E9-06DA751237AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C33F760-B3BD-49AD-A0E9-06DA751237AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C33F760-B3BD-49AD-A0E9-06DA751237AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C33F760-B3BD-49AD-A0E9-06DA751237AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE7724B-070C-4B7E-8291-C0B1C04FE149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE7724B-070C-4B7E-8291-C0B1C04FE149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE7724B-070C-4B7E-8291-C0B1C04FE149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE7724B-070C-4B7E-8291-C0B1C04FE149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0B58C02-BB01-42CD-B46D-5E91F04ED8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B58C02-BB01-42CD-B46D-5E91F04ED8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B58C02-BB01-42CD-B46D-5E91F04ED8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B58C02-BB01-42CD-B46D-5E91F04ED8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

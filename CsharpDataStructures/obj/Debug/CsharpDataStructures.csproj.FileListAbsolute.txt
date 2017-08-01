@@ -1,0 +1,6 @@
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpDataStructures\bin\Debug\CsharpDataStructures.exe.config
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpDataStructures\bin\Debug\CsharpDataStructures.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpDataStructures\bin\Debug\CsharpDataStructures.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpDataStructures\obj\Debug\CsharpDataStructures.csprojResolveAssemblyReference.cache
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpDataStructures\obj\Debug\CsharpDataStructures.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpDataStructures\obj\Debug\CsharpDataStructures.pdb

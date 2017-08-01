@@ -1,0 +1,6 @@
+C:\Users\amanny\documents\visual studio 2012\Projects\Winter\HackerR\obj\Debug\HackerR.csprojResolveAssemblyReference.cache
+C:\Users\amanny\documents\visual studio 2012\Projects\Winter\HackerR\bin\Debug\HackerR.exe.config
+C:\Users\amanny\documents\visual studio 2012\Projects\Winter\HackerR\bin\Debug\HackerR.exe
+C:\Users\amanny\documents\visual studio 2012\Projects\Winter\HackerR\bin\Debug\HackerR.pdb
+C:\Users\amanny\documents\visual studio 2012\Projects\Winter\HackerR\obj\Debug\HackerR.exe
+C:\Users\amanny\documents\visual studio 2012\Projects\Winter\HackerR\obj\Debug\HackerR.pdb
