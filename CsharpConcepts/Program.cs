@@ -53,6 +53,25 @@ namespace CsharpConcepts
 
 			t1(8);
 
+			//Factory Method
+
+			VehicleFactory veh = new MotorBikeFactory();
+			IVehicle v = veh.CreateVehicle();
+			Console.WriteLine(v.VersionId);
+			v.Type();
+			v.WheelCount();
+
+			//Abstract Factory Pattern
+
+			WineFactory american = new AmericanWineFactory();
+			WineShop shop = new WineShop(american);
+			shop.PrintList();
+			
+			WineFactory european = new EuropeanWineFactory();
+			shop = new WineShop(european);
+			shop.PrintList();
+	   
+
 			Console.ReadKey();
 		}
 

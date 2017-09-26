@@ -46,4 +46,30 @@ namespace HackerRCrackingTheCodingI
 			n.adjacent.Add(this);
 		}
 	}
+
+	public class BasicNode: GenericNode
+	{
+		public List<BasicNode> adjacent;
+		public int data;
+		public int weight;
+		public bool visited;
+
+		public BasicNode()
+		{
+		}
+
+		public BasicNode(int data, int weight)
+		{
+			this.data = data;
+			this.weight = weight;
+			adjacent = new List<BasicNode>();
+		}
+
+		public void hasNeigbour(BasicNode n)
+		{
+			adjacent.Add(n);
+		}
+	}
+
+
 }

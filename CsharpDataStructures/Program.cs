@@ -52,7 +52,7 @@ namespace CsharpDataStructures
 
 			//ArrayList Collection (for non-fixed size)
 
-			Console.WriteLine("********ArrayList Collection (for non-fixed size)*********\n"); 
+			Console.WriteLine("********ArrayList Collection (for non-fixed size) and its stores Object references by upcasting any type*********\n"); 
 
 			ArrayList arrayList = new ArrayList();
 
@@ -65,7 +65,7 @@ namespace CsharpDataStructures
 
 			//List Collection (for non-fixed size) - O(n)
 
-			Console.WriteLine("********List Collection (for non-fixed size)- O(n) *********\n"); 
+			Console.WriteLine("********List Collection (for non-fixed size)- O(n) and its stored specific generic data type references and can be easily used With LINQ *********\n"); 
 
 			List<int> list = new List<int>();
 
@@ -199,7 +199,7 @@ namespace CsharpDataStructures
 			stack.Clear();
 
 
-			//******************************************************* Linked List **********************************************/
+			//******************************************************* Linked List (It is doubly linked list in c# library) **********************************************/
 
 			// LinkedList - O(n) 
 
@@ -227,7 +227,7 @@ namespace CsharpDataStructures
 
 			//******************************************************* ISet **********************************************/
 
-			// SortedSet - O(log n) 
+			// SortedSet - O(log n) ----- Set usually has no duplicates
 
 			Console.WriteLine("*********SortedSet- O(log n) *********\n");
 

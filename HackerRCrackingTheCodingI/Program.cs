@@ -327,7 +327,7 @@ namespace HackerRCrackingTheCodingI
 		   }
 		   */
 
-		   /** DP: Coin Change - (Now working) **/
+		   /** DP: Coin Change - (Now working) **
 		   string[] tokens_n = Console.ReadLine().Split(' ');
 		   int n = Convert.ToInt32(tokens_n[0]);
 		   int m = Convert.ToInt32(tokens_n[1]);
@@ -336,10 +336,13 @@ namespace HackerRCrackingTheCodingI
 
 		   long k = MakeChange(n, coins);
 		   Console.WriteLine(k);
+		    */
+
 
 		   Console.ReadKey();
 
 		}
+
 
 		// DP: Coin Change
 		private static long MakeChange(int n, int[] coins)
@@ -455,7 +458,6 @@ namespace HackerRCrackingTheCodingI
 
 			return cur;
 		}
-
 
 		// Time Complexity: Primality
 		private static void PrimeNumberValidation(int n)
