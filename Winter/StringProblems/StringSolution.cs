@@ -448,7 +448,7 @@ namespace Winter
 			
 		}
 
-		static string firstRepeatingLetter(string s)
+		public static string firstRepeatingLetter(string s)
 		{
 			char[] sortedCharArray = s.ToCharArray();
 
@@ -475,5 +475,23 @@ namespace Winter
 			return null;
 
 		}
+
+		public string findResultingDirectoryForCD(string currentDirectory,
+		    string sequenceOfOperations) {
+
+		    string[] splitDirectories = sequenceOfOperations.Split('|');
+
+			for (int i = 0; i < splitDirectories.Length; i++) {
+				if (splitDirectories[i].Equals("..")) {
+					currentDirectory = currentDirectory.Substring(0,
+							currentDirectory.LastIndexOf("/"));
+				} else {
+					currentDirectory = currentDirectory + "/" + splitDirectories[i];
+				}
+			}
+
+			return currentDirectory;
+	    }
+
 	}
 }

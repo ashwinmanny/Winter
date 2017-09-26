@@ -186,7 +186,7 @@ namespace Winter
 			 * */
 
 
-			/**************************************************** Maximum Product of Three Numbers *****/
+			/**************************************************** Maximum Product of Three Numbers *****
 			
 			SortingSolution s = new SortingSolution();
 			int[] input1 = {-4, -3, -1, -2, 60};
@@ -194,6 +194,7 @@ namespace Winter
 			Console.WriteLine("Maximum Product of Three Numbers in list " + s.MaximumProduct(input1));
 
 			Console.ReadLine();
+			*/
 
 			/**************************************************** Longest Palindrome ******
 			
@@ -266,13 +267,14 @@ namespace Winter
 			 * 
 			 **/
 
-			/****************************************************  N-Queen Problem ********
+			/****************************************************  N-Queen Problem (Not over)*******
 			RecursiveSolution r = new RecursiveSolution();
 
-			IList<string[]> s = r.SolveNQueens(8);
-			 
-			 **/
+			IList<string[]> s1 = r.SolveNQueens(4);
 
+
+		   */
+			 
 
 			/****************************************************  Integer to English Words *****
 			RecursiveSolution r = new RecursiveSolution();
@@ -298,12 +300,11 @@ namespace Winter
 
 			/****************************************************  Evaluate math expression *****
 			MathSolution d = new MathSolution();
-			decimal d2 = d.EvaluateMathExpression("+ 1");
+			decimal d2 = d.EvaluateMathExpression("9+6-15");
 
 			Console.WriteLine("Answer " + d2);
 
 			Console.ReadLine();
-			*
 			*/
 
 			/****************************************************  Max Points on a Line *****
@@ -485,6 +486,47 @@ namespace Winter
 			Console.ReadLine();
 			 
 			 * */
+
+			/*********************Change Directory 'cd' ****************
+
+			StringSolution s = new StringSolution();
+
+			string output = s.findResultingDirectoryForCD("a/b", "cccc|..|d|e|..|f");
+
+			Console.WriteLine(output);
+
+			Console.ReadKey();
+
+			*/
+
+			/**********Merge Sorted List**********************
+
+			ArraySolution a = new ArraySolution();
+
+			int[] A = {3, 7, 8, 9, -1, -1, -1};
+
+			int[] B = {4, 12, 18};
+
+			a.MergeTwoSortedArray(A, 4, B, 3);
+
+			Console.WriteLine("Merge 2 sorted array problem ", A.ToString());
+
+			Console.ReadKey();
+
+			*/
+
+			/************* Max product of 3 numbers***************
+
+			ArraySolution a = new ArraySolution();
+			int[] arr = { -10, -3, 5, 6, -20 };
+			int n = arr.Length;
+ 
+			int max = a.MaxProductThreeNumbers(arr, n);
+
+			Console.WriteLine("Max product of three numbers "+ max);
+
+			Console.ReadKey();
+			*/
 
 			/*******Merge Intervals************************************
 
@@ -683,6 +725,36 @@ namespace Winter
 			d.StringContentSeperator(s);
 
 			Console.WriteLine("Done");
+			Console.ReadLine();
+			*/
+
+
+			/*********** LRU Cache problem (Inefficient - Leetcode has efficient method) ***********
+			 
+
+			LRUCache obj = new LRUCache(2);
+
+			//["LRUCache","get","put","get","put","put","get","get"]
+            //[[2],[2],[2,6],[1],[1,5],[1,2],[1],[2]]
+			
+
+			int param_1 = obj.Get(2);
+			Console.WriteLine(" Value for input key is  " + param_1);
+
+			obj.Put(2,6);
+
+			int param_2 = obj.Get(1);
+			Console.WriteLine(" Value for input key is  " + param_2);
+
+			obj.Put(1, 5);
+			obj.Put(1, 2);
+
+			int param_3 = obj.Get(1);
+			Console.WriteLine(" Value for input key is  " + param_3);
+
+			int param_4 = obj.Get(2);
+			Console.WriteLine(" Value for input key is  " + param_4);
+
 			Console.ReadLine();
 			*/
 		}

@@ -174,6 +174,21 @@ namespace Winter.ArrayProblems
 			return max;
 		}
 
+		public int MaxProductThreeNumbers(int[] nums, int n)
+		{
+			// if size is less than 3, no triplet exists
+			if (n < 3)
+				return -1;
+ 
+			// Sort the array in ascending order
+
+		    Array.Sort(nums);
+ 
+			// Return the maximum of product of last three elements 
+			// and 
+			// product of first two elements and last element (This one is to cover -ve numbers)
+			return Math.Max(nums[0] * nums[1] * nums[n - 1], nums[n - 1] * nums[n - 2] * nums[n - 3]);
+		}
 		public IList<int[]> GetSkyline(int[,] buildings)
 		{
 			List<int[]> result = new List<int[]>();
@@ -531,7 +546,30 @@ namespace Winter.ArrayProblems
 
 			return output;
 		}
+
+		public void MergeTwoSortedArray(int[] A, int m, int[] B, int n)
+		{
+			var aindex = m - 1;
+			var bindex = n - 1;
+			while (aindex >= 0 || bindex >= 0)
+			{
+				var avalue = aindex >= 0 ? A[aindex] : int.MinValue;
+				var bvalue = bindex >= 0 ? B[bindex] : int.MinValue;
+
+				if (avalue > bvalue)
+				{
+					A[aindex + bindex + 1] = avalue;
+					aindex--;
+				}
+				else
+				{
+					A[aindex + bindex + 1] = bvalue;
+					bindex--;
+				}
+			}
+		}
     }
+
     public class Interval
 	{
        public int start;

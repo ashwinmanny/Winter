@@ -82,4 +82,69 @@ namespace Winter.LinkedListsProblems
 			this.data = x;
 		}
 	}
+
+	public class LRUCache
+	{
+		int Capacity { get; set; }
+
+		LinkedList<KeyValuePair<int, int>> doubleyLinkedList = new LinkedList<KeyValuePair<int, int>>();
+
+		public LRUCache(int capacity)
+		{
+			this.Capacity = capacity;
+		}
+
+		public int Get(int key)
+		{
+			int output = -1;
+
+			var found = this.doubleyLinkedList.Where(x => x.Key == key).ToList();
+
+			if (!(found.Count == 0))
+			{
+				output = found[0].Value;
+
+				this.doubleyLinkedList.Remove(found[0]);
+				this.doubleyLinkedList.AddFirst(found[0]);
+			}
+
+			return output;
+		}
+
+		public void Put(int key, int value)
+		{
+			KeyValuePair<int, int> keyValue = new KeyValuePair<int, int>(key, value);
+
+			int val = Get(key);
+
+			if (this.Capacity != this.doubleyLinkedList.Count)
+			{
+				if (val == -1)
+				{
+					this.doubleyLinkedList.AddFirst(keyValue);
+				}
+				else
+				{
+					KeyValuePair<int, int> oldKeyValue = new KeyValuePair<int, int>(key, val);
+					this.doubleyLinkedList.Remove(oldKeyValue);
+					this.doubleyLinkedList.AddFirst(keyValue);
+				}
+					
+			}
+			else
+			{
+				if (val == -1)
+				{
+					this.doubleyLinkedList.RemoveLast();
+					this.doubleyLinkedList.AddFirst(keyValue);
+				}
+				else
+				{
+					KeyValuePair<int, int> oldKeyValue = new KeyValuePair<int, int>(key, val);
+					this.doubleyLinkedList.Remove(oldKeyValue);
+					this.doubleyLinkedList.AddFirst(keyValue);
+				}
+			}
+		}
+	}
 }
