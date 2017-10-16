@@ -8,6 +8,38 @@ namespace Winter.DynamicProblems
 {
 	class DynamicSolution
 	{
+		public int fibonacciBottomUpDP(int p)
+		{
+			int[] memo = new int[p + 1];
+			int i = 0;
+			memo[0] = 0;
+			memo[1] = 1;
+
+			for (i = 2; i <= p; i++)
+			{
+				memo[i] = memo[i - 1] + memo[i - 2];
+			}
+
+			return memo[p];
+		}
+
+		public int fibonacciTopDownMemoized(int n, int[] memo)
+		{
+			if (n <= 2)
+			{
+				return 1;
+			}
+			else if (memo[n] != -1)
+			{
+				return memo[n];
+			}
+			else
+			{
+				memo[n] = fibonacciTopDownMemoized(n - 1, memo) + fibonacciTopDownMemoized(n - 2, memo);
+			}
+			return memo[n];
+		}
+
 		public bool IsSubsetSum(int[] a, int n, int sum)
 		{
 	
@@ -145,6 +177,34 @@ namespace Winter.DynamicProblems
 		{
            /* yet to undertsand and do*/
 			return 0;
+		}
+
+		public bool WordBreak(string s, IList<string> wordDict)
+		{
+
+			bool result = false;
+			if (wordDict == null || s == null)
+			{
+				return false;
+			}
+			else if (s.Equals(String.Empty))
+			{
+				result = true;
+			}
+
+			string segment = null;
+			for (int i = 0; i < s.Length; i++)
+			{
+				segment = segment + s[i];
+
+				if(wordDict.Contains(segment))
+				{
+					WordBreak(s.Substring(i+1), wordDict);
+				}
+			}
+
+			return result;
+
 		}
 	}
 }

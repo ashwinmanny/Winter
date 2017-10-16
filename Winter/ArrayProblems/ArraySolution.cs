@@ -568,6 +568,37 @@ namespace Winter.ArrayProblems
 				}
 			}
 		}
+
+		public int LongestConsecutive(int[] nums)// O(n)
+		{
+			int count = 0;
+			if (nums.Length == 0)
+			{
+				return 0;
+			}
+			
+			var set = new HashSet<int>(nums);
+
+			for (int i = 0; i < nums.Length; i++)
+			{
+				if(!set.Contains(nums[i]-1))
+				{
+					int j = nums[i];
+					while (set.Contains(j))
+					{
+						j++;
+					}
+
+					if(count < j-nums[i])
+					{
+						count = j - nums[i];
+					}
+				}
+			}
+
+			return count;
+
+		}
     }
 
     public class Interval

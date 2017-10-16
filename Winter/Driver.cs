@@ -485,7 +485,7 @@ namespace Winter
 			Console.WriteLine("Merge k sorted problem ", outputList);
 			Console.ReadLine();
 			 
-			 * */
+			*/
 
 			/*********************Change Directory 'cd' ****************
 
@@ -757,6 +757,98 @@ namespace Winter
 
 			Console.ReadLine();
 			*/
+
+			/*********************Longest Consecutive Sequence**************************************
+
+			int[] input = new int[] {100, 4, 200, 1, 3, 2, 204, 201, 203, 202};
+
+			//int[] input = new int[] {};
+
+			ArraySolution a = new ArraySolution();
+
+			int output = a.LongestConsecutive(input);
+
+			Console.WriteLine(output);
+
+			Console.ReadLine();
+
+			*/
+
+			/***********************Minimum Window Substring*********************
+
+			string s = "ADOBECODEBANC";
+			string t = "ABC";
+			  
+
+			StringSolution st = new StringSolution();
+
+			string output = st.MinWindow(s, t);
+			Console.WriteLine(output);
+			 
+			*/
+
+			/********Longest Substring Without Repeating Characters******
+
+			StringSolution st = new StringSolution();
+			string s = "pwweke";
+
+			int output = st.LengthOfLongestSubstringWithoutReapeatingChars(s);
+			Console.WriteLine(output);
+
+			*/
+
+			/********Word Break****************incomplete***************************
+
+			DynamicSolution d = new DynamicSolution();
+
+			string input = "leetcode";
+			List<string> dict = new List<string>();
+
+			dict.Add("leet");
+			dict.Add("ram");
+			dict.Add("moon");
+			dict.Add("code");
+			dict.Add("star");
+
+
+
+			bool output = d.WordBreak(input, dict);
+
+			Console.WriteLine(output);
+			*/
+
+			/**********Fibonacci*****************************/
+			RecursiveSolution rec = new RecursiveSolution();
+
+			DynamicSolution dp = new DynamicSolution();
+
+			int n = 5;
+
+			//recursive
+			Console.WriteLine(rec.fibonacci(n));
+
+			//bottom-up dynamic
+			Console.WriteLine(dp.fibonacciBottomUpDP(n));
+
+			// top-down memoization
+			int[] memo = new int[n + 1];
+
+			memo = Enumerable.Range(0, n+1).Select(i => -1).ToArray();
+
+			Console.WriteLine(dp.fibonacciTopDownMemoized(n, memo));
+
+			/*********************Regular Expression Matching----------unfinished**************************************
+			   if the next character in p is *, 
+			   then it has two cases, 
+			   it can just skip 2 character in p(character * match nothing in this case); 
+			   or it can just skip 0 character in p while s skip 1 character in s(character *, s and p in that character should be equal and character * matches more than 1 character in s)
+
+				isMatch("ab", ".*") → true
+				isMatch("aab", "c*a*b") → true
+				*/
+
+			Console.ReadLine();
+			
 		}
 
 		static Node1 insert(Node1 root, int data)

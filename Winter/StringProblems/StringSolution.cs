@@ -493,5 +493,140 @@ namespace Winter
 			return currentDirectory;
 	    }
 
+		public int LengthOfLongestSubstringWithoutReapeatingChars(String s)
+		{
+			int length = 0;
+			for (int start = 0; start < s.Length; start++)
+			{
+				int i = start;
+				var dictionary = new Dictionary<char, int>();
+
+				while (i < s.Length && !dictionary.ContainsKey(s[i])) 
+				{ 
+					dictionary.Add(s[i], 1);
+					i++;
+				}
+
+				length = Math.Max(length, i - start);
+			}
+
+			return length;
+		}
+
+		public string MinWindow(string s, string t)
+		{
+			Dictionary<int, int> map = new Dictionary<int,int>();
+
+			int counter = t.Length; // for checking validity of window
+			int begin = 0, end = 0;
+			int length = int.MaxValue; // initialize length to 0 or max
+			int minStart = 0;
+
+			//initialize the hashmap for all ASCII characters
+			for (int i = 0; i < 128; i++)
+			{
+				map.Add(i, 0);
+			}
+
+			foreach (char item in t)
+			{
+				if (map.ContainsKey(item))
+				{
+					map[item]++;
+				}
+			}
+
+			while(end < s.Length)
+			{
+				if (map[s[end]] > 0)
+				{
+					//modify counter here
+					counter--;
+				}
+				map[s[end]]--;
+
+				end++;
+				
+				//counter condition (valid window, so make move to find smaller window)
+				while (counter == 0)
+				{
+					/*update length here if finding minimum*/
+					if (end - begin < length)
+					{
+						minStart = begin;
+						length = end - begin;
+					}
+
+					map[s[begin]]++;
+					if (map[s[begin]] > 0)
+					{
+						//modify counter here
+						counter++;
+					}
+					begin++;
+
+				}
+
+				/*update length here if finding maximum*/
+			}
+
+			if (length == int.MaxValue)
+			{
+				length = 0;
+			}
+
+			return s.Substring(minStart, length);
+		}
+
+		public int MinWindowSkeleton(string s, string t)
+		{
+			Dictionary<int, int> hashmap = new Dictionary<int, int>();
+
+			int counter = t.Length; // check whether the substring is valid
+			int begin = 0, end = 0;//two pointers, one point to tail and one  head
+			int length = int.MaxValue; // the length of output substring initialized to max or 0 depending on min-max respectively
+
+			//initialize the hashmap for all ASCII characters
+			for (int i = 0; i < 128; i++)
+			{ /* initialize the hash map here */
+				hashmap.Add(i, 0);			 
+			}
+
+			/* Update hashmap for recording occurance of input substring t against s */
+			
+
+			while (end < s.Length)
+			{
+				if (hashmap[s[end]] > 0) // '> 0' condition here changes as per the problem
+				{
+					//modify counter here
+					counter--;
+				}
+				hashmap[s[end]]--;
+				end++;
+
+				//Enter only when valid condition counter is met
+				while (/*counter condition that can change*/ counter == 0)
+				{
+					/*update length here if finding minimum*/
+
+					//increase begin to make it invalid/valid again
+
+					hashmap[s[begin]]++;
+					if (hashmap[s[begin]] > 0) // '> 0' condition here changes as per the problem
+					{
+						//modify counter here
+						counter++;
+					}
+					begin++;
+
+				}
+
+				/*update length here if finding maximum*/
+			}
+
+			return length;
+		}
+
 	}
 }
