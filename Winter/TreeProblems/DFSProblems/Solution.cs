@@ -191,7 +191,7 @@ namespace Winter.DFSProblems
 					findFriendsDFS(M, visited, j);
 				}
 			}
-		}                                                          
+		}
 
 	}
 }

@@ -179,32 +179,173 @@ namespace Winter.DynamicProblems
 			return 0;
 		}
 
-		public bool WordBreak(string s, IList<string> wordDict)
+		public int MinDistance(string word1, string word2)
 		{
+			var len1 = word1.Length;
+			var len2 = word2.Length;
+			var dp = new int[len1 + 1, len2 + 1];
+			dp[0, 0] = 0;
 
-			bool result = false;
-			if (wordDict == null || s == null)
+			for (int i = 0; i < len1; i++)
 			{
-				return false;
+				dp[i + 1, 0] = i + 1;
 			}
-			else if (s.Equals(String.Empty))
+			for (int i = 0; i < len2; i++)
 			{
-				result = true;
+				dp[0, i + 1] = i + 1;
 			}
 
-			string segment = null;
-			for (int i = 0; i < s.Length; i++)
+			for (int i = 0; i < len1; i++)
 			{
-				segment = segment + s[i];
-
-				if(wordDict.Contains(segment))
+				for (int j = 0; j < len2; j++)
 				{
-					WordBreak(s.Substring(i+1), wordDict);
+					if (word1[i] == word2[j])
+					{
+						dp[i + 1, j + 1] = dp[i, j];
+					}
+					else
+					{
+						dp[i + 1, j + 1] = Math.Min(Math.Min(dp[i, j], dp[i, j + 1]), dp[i + 1, j]) + 1;
+					}
 				}
 			}
 
-			return result;
+			return dp[len1, len2];
+		}
 
+		public bool WordBreak(string s, IList<string> wordDict)
+		{
+			if (s == null || wordDict == null)
+			{
+				return false;
+			}
+
+			bool[] dp = new bool[s.Length+1];
+
+			dp[0] = true; //empty substring ""
+
+			for (int i = 1; i < dp.Length; i++)
+			{
+				for (int j = 0; j < i; j++)
+				{
+					if (wordDict.Contains(s.Substring(j,i-j)) && dp[j]) //dp[k] = dp[0] + string[0 - k] in dict......dp[k-1] + string[(k-1) - k] in dict
+					{
+						dp[i] = true;
+						break;
+					}
+				  
+				}
+			}
+
+			return dp[s.Length];
+
+		}
+
+		public bool WordBreak2(string s, List<string> wordDict)
+		{
+			List<string> wordFound = new List<string>();
+
+			List<string> wordFound2 = new List<string>();
+
+			var dp2 = new List<List<string>>();
+			for (int i = 0; i < s.Length + 1; i++)
+			{
+				dp2.Add(new List<string>());
+			}
+
+			bool[] dp = new bool[s.Length+1];
+
+			dp[0] = true;
+
+			for (int i = 1; i < dp.Length; i++)
+			{
+				for (int j = 0; j < i; j++)
+				{
+					if (wordDict.Contains(s.Substring(j, i - j)) && dp[j])
+					{
+						dp[i] = true;
+						dp2[i].Add(s.Substring(j, i - j));
+						wordFound.Add(s.Substring(j, i - j));
+						break;
+					}
+				}
+			}
+		   
+			Helper(wordFound, wordFound2, string.Empty);
+
+			return dp[s.Length];
+		}
+
+		private void Helper(List<string> wordFound, List<string> res, string solution)
+		{
+			
+		}
+
+		public IList<IList<int>> AnySum(int[] nums, int target)
+		{
+			Array.Sort(nums);
+			int k = 4;
+			return kSum(nums, 0, k, target);
+		}
+
+		public IList<IList<int>> kSum(int[] nums, int start, int k, int target)
+		{
+			int len = nums.Length;
+			IList<IList<int>> res = new List<IList<int>>();
+			if (k == 2)
+			{
+				int left = start;
+				int right = len - 1;
+				while (left < right)
+				{
+					int sum = nums[left] + nums[right];
+					if (sum == target)
+					{
+						res.Add((new List<int> { nums[left], nums[right] }));
+						while (left < right && nums[left] == nums[left + 1])
+						{
+							left++;
+						}
+						while (left < right && nums[right] == nums[right - 1])
+						{
+							right--;
+						}
+						left++;
+						right--;
+					}
+					else if (sum < target)
+					{
+						left++;
+					}
+					else right--;
+				}
+			}
+			else
+			{
+				for (int i = start; i < len - k + 1; i++)
+				{
+					while (i > start && i < len - 1 && nums[i] == nums[i - 1]) 
+					{ 
+						i++; 
+					}
+
+					//recursion
+					var temp = kSum(nums, i + 1, k - 1, target - nums[i]);
+					
+					
+					foreach (var element in temp)
+					{
+						element.Add(nums[i]);
+					}
+					 
+					foreach (var val in temp)
+					{
+						res.Add(val);
+					}
+				}
+			}
+
+			return res;
 		}
 	}
 }

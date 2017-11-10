@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Winter.ArrayProblems;
 using Winter.DFSProblems;
@@ -12,6 +14,7 @@ using Winter.Recursion;
 using Winter.Searching;
 using Winter.SortingProblems;
 using Winter.StackProblems;
+using Winter.TreeProblems;
 
 namespace Winter
 {
@@ -114,6 +117,168 @@ namespace Winter
 			Console.WriteLine(max);
 			*/
 
+			/**************************************************** Two Sum II - Input array is sorted **
+			
+			ArraySolution s = new ArraySolution();
+			int[] input1 = { 2, 7, 11, 15 };
+			int target = 9;
+			int[] i = s.TwoSum(input1,target);
+
+			Console.WriteLine("The two numbers that add up to 9 are {0} and {1}",input1[i[0]-1],input1[i[1]-1]);
+			
+			//for returning lists
+			
+					IList<IList<int>> answer = s.TwoSum2(input1, 9);
+
+					foreach (List<int> items in answer)
+					{
+						items.Sort();
+						foreach (int item in items)
+						{
+							Console.Write("{0},", item);
+						}
+						Console.WriteLine("");
+
+					}
+			*/
+
+			/**************************************************** Two Sum Input array is unsorted **
+
+			ArraySolution s = new ArraySolution();
+			int[] input1 = { 2, 5, 4 };
+			int target = 6;
+			int[] i = s.TwoSumUnsorted(input1, target);
+
+			Console.WriteLine("aaa {0} {1}" + i[0] + i[1]);
+			**/
+
+			/**************************************************** 3Sum Closest ********************************************
+
+			ArraySolution a = new ArraySolution();
+
+			int[] input = {-1, 2, 1, -4};
+			int target = 1;
+
+			int answer = a.ThreeSumClosest(input, target);
+
+			Console.WriteLine(answer);
+			 */
+
+			/**************************************************** 3Sum Smaller *******************************************
+
+			ArraySolution a = new ArraySolution();
+
+			int[] input = {-2, 0, 1, 3};
+			int target = 2;
+
+			int answer = a.ThreeSumSmaller(input, target);
+
+			Console.WriteLine(answer);
+			 */
+
+			/**************************************************** 3Sum : a + b + c = 0************************************
+
+			ArraySolution a = new ArraySolution();
+
+			int[] input = { -1, 0, 1, 2, -1, -4 };
+			
+
+			IList<IList<int>> answer = a.ThreeSum(input);
+
+			foreach (List<int> items in answer)
+			{
+				foreach (int item in items)
+				{
+					Console.Write("{0},", item);
+				}
+				Console.WriteLine("");
+
+			}
+			*/
+
+			/**************************************************** 4Sum : a + b + c + d= 0***********************************
+
+			ArraySolution a = new ArraySolution();
+
+			int[] input = { 1, 0, -1, 0, -2, 2 };
+
+			DynamicSolution d = new DynamicSolution();
+
+			//IList<IList<int>> answer = a.FourSum(input, 0);
+			IList<IList<int>> answer = d.AnySum(input,0);
+
+			foreach (List<int> items in answer)
+			{
+				items.Sort();
+				foreach (int item in items)
+				{
+					Console.Write("{0},", item);
+				}
+				Console.WriteLine("");
+
+			}
+			  
+			*/
+
+			/**************************************************** KSum ************************************
+
+			ArraySolution a = new ArraySolution();
+
+			int[] input = { 1, 0, -1, 0, -2, 2 };
+
+			DynamicSolution d = new DynamicSolution();
+
+			//IList<IList<int>> answer = a.FourSum(input, 0);
+
+			//inputs: array, target
+			IList<IList<int>> answer = d.AnySum(input, 0);
+
+			foreach (List<int> items in answer)
+			{
+				items.Sort();
+				foreach (int item in items)
+				{
+					Console.Write("{0},", item);
+				}
+				Console.WriteLine("");
+
+			}
+			*/
+			
+
+			/**************************************************** Falling Squares***********************************
+
+			int[,] input = new int[3,2] { { 1, 2 }, { 2, 3 }, { 6, 1 } };
+
+			ArraySolution a = new ArraySolution();
+
+			IList<int> output = a.FallingSquares(input);
+
+			foreach (int item in output)
+			{
+				Console.Write("{0}", item);
+
+				Console.WriteLine("");
+			}
+
+			*/
+
+			/**************************************************** Squirrel Simulation***********************************
+
+			int Height = 5;
+			int Width = 7;
+			int[] TreePosition = new int[2]{2,2};
+			int[] Squirrel = new int[2]{4,4};
+			int[,] Nuts = new int[2,2]{{3,0}, {2,5}};
+
+			MathSolution a = new MathSolution();
+
+			int output = a.MinDistance(Height, Width, TreePosition,  Squirrel, Nuts);
+			
+			Console.Write("{0}", output);
+
+			*/
+			 
 			/**************************************************** Sum subset problem (No recursion - dynamic - non-negative integer input) **
 			
 			DynamicSolution s = new DynamicSolution();
@@ -164,16 +329,6 @@ namespace Winter
 			 * 
 			 * */
 
-			/**************************************************** Two Sum II - Input array is sorted **
-			
-			SortingSolution s = new SortingSolution();
-			int[] input1 = { 2, 7, 11, 15 };
-			int target = 9;
-			int[] i = s.TwoSum(input1,target);
-
-			Console.WriteLine("aaa {0} {1}"+i[0]+i[1]);
-
-			 * */
 
 			/**************************************************** Median of Two Sorted Arrays *****
 			
@@ -233,24 +388,13 @@ namespace Winter
 			Console.WriteLine(r);
 			 */
 
-
-			/**************************************************** Two Sum Input array is unsorted **
+			/**************************************************** Pow(x,n) *
 			
-			ArraySolution s = new ArraySolution();
-			int[] input1 = {3,2,4};
-			int target = 6;
-			int[] i = s.TwoSumUnsorted(input1,target);
-			 
-			Console.WriteLine("aaa {0} {1}"+i[0]+i[1]);
-			**/
+			RecursiveSolution s = new RecursiveSolution();
 
-			/**************************************************** Pow(x,n) **
-			
-			MathSolution s = new MathSolution();
+			Console.WriteLine("Power " + s.MyPow(2,8));
 
-			Console.WriteLine("Power " + s.MyPow(2,-8));
-
-			 * */
+			 */
 
 			/**************************************************** Valid Parentheses *********
 			StringSolution s = new StringSolution();
@@ -446,6 +590,40 @@ namespace Winter
 			Console.ReadLine();
 
 			**/
+
+			/************************Reverse Linked List****************************
+
+
+			LinkedListNode node1 = new LinkedListNode(10);
+			LinkedListNode node2 = new LinkedListNode(5);
+			LinkedListNode node3 = new LinkedListNode(4);
+
+			node1.next = node2;
+			node2.next = node3;
+			node3.next = null;
+
+			LinkedListNode nodeOutput = LinkedListSolution.ReverseList(node1);
+
+			while (nodeOutput != null)
+			{
+				int value = nodeOutput.data;
+				Console.WriteLine(value);
+				nodeOutput = nodeOutput.next;
+			}
+
+
+			*/
+
+			/************************1-bit and 2-bit Characters   ****************************
+
+			ArraySolution  a = new ArraySolution();
+
+			int[] bits = new int[] { 1, 1, 1, 0 };
+
+			bool nodeOutput = a.IsOneBitCharacter(bits);
+			Console.WriteLine(nodeOutput);
+
+			*/
 
 			/*******Merge K sorted list problem *********
 
@@ -712,6 +890,7 @@ namespace Winter
 
 			Console.WriteLine("Inorder traveral of a BT {0} ", inOrderTraversal.InorderTraversal(n));
 			Console.WriteLine("Preorder traveral of a BT {0} ", preOrderTraversal.PreorderTraversal(n));
+		    // List<BinaryTreeNode> list2 = preOrderTraversal.PreorderTraversalRecursion(n);
 			Console.WriteLine("Postorder traveral of a BT {0} ", postOrderTraversal.PostorderTraversal(n));
 			Console.ReadLine();
 						 
@@ -797,7 +976,7 @@ namespace Winter
 
 			*/
 
-			/********Word Break****************incomplete***************************
+			/********Word Break****************************
 
 			DynamicSolution d = new DynamicSolution();
 
@@ -809,15 +988,16 @@ namespace Winter
 			dict.Add("moon");
 			dict.Add("code");
 			dict.Add("star");
-
-
+			dict.Add("aaaa");
+			dict.Add("aaa");
 
 			bool output = d.WordBreak(input, dict);
 
 			Console.WriteLine(output);
-			*/
+			
+			*/			
 
-			/**********Fibonacci*****************************/
+			/**********Fibonacci****************************
 			RecursiveSolution rec = new RecursiveSolution();
 
 			DynamicSolution dp = new DynamicSolution();
@@ -836,6 +1016,145 @@ namespace Winter
 			memo = Enumerable.Range(0, n+1).Select(i => -1).ToArray();
 
 			Console.WriteLine(dp.fibonacciTopDownMemoized(n, memo));
+			 * */
+
+			/***********************Word Pattern*********************
+
+			string pattern = "abba";
+
+			string str = "dog cat cat dog";
+
+			ArraySolution a = new ArraySolution();
+			Console.WriteLine(a.WordPattern(pattern, str));
+			Console.ReadLine();
+			*/
+
+			/***********************Word Pattern 2 (Recursive Hasmap and backtracking)*********************
+
+			string pattern = "aabb";
+
+			string str = "xyzabcxzyabc";
+
+			RecursiveSolution a = new RecursiveSolution();
+			Console.WriteLine(a.WordPattern2(pattern, str));
+			Console.ReadLine();
+
+			*/
+
+			/************************Sudoku Validity*******************************************************
+
+			string[,] input = new string[9, 9] {
+							  {".","8","7","6","5","4","3","2","1"},
+							  {"2",".",".",".",".",".",".",".","."},
+							  {"3",".",".",".",".",".",".",".","."},
+					          {"4",".",".",".",".",".",".",".","."},
+						      {"5",".",".",".",".",".",".",".","."},
+							  {"6",".",".",".",".",".",".",".","."},
+							  {"7",".",".",".",".",".",".",".","."},
+							  {"8",".",".",".",".",".",".",".","."},
+							  {"9",".",".",".",".",".",".",".","."}
+							};
+
+
+			char[,] inputCharArray = new char[9,9];
+			for(int i = 0; i <9; i++)
+			{
+				for (int j = 0; j < 9; j++)
+				{
+					inputCharArray[i,j] = Convert.ToChar(input[i,j]);
+				}
+				
+			}
+
+			ArraySolution a = new ArraySolution();
+			Console.WriteLine(a.IsValidSudoku(inputCharArray));
+
+			//a.SolveSudoku(inputCharArray); incomplete sudoku solver
+
+			Console.ReadKey();
+			*/
+
+
+
+			/**********************Replace words*******************
+
+			ArraySolution a = new ArraySolution();
+
+			List<string> l = new List<string>();
+
+			l.Add("cat");
+			l.Add("bat");
+			l.Add("rat");
+
+			string input = "the cattle was rattled by the battery";
+
+			Console.WriteLine(a.replaceWords(l, input));
+			 * 
+			 * */
+
+			/*********************Serialize and Deserialize Binary Tree**************
+
+			BinaryTreeNode n = new BinaryTreeNode(20);
+			BinaryTreeNode o = new BinaryTreeNode(8);
+			BinaryTreeNode p = new BinaryTreeNode(4);
+			BinaryTreeNode q = new BinaryTreeNode(12);
+			BinaryTreeNode r = new BinaryTreeNode(10);
+			BinaryTreeNode s = new BinaryTreeNode(14);
+			
+			n.left = o;
+			o.left = p;
+			o.right = q;
+			q.left = r;
+			q.right = s;
+			
+			BinaryTreeSolution b = new BinaryTreeSolution();
+
+			//preorder-traversal
+			string serializedBinaryTree = b.serialize(n);
+			Console.WriteLine(serializedBinaryTree);
+
+			BinaryTreeNode root = b.deserialize(serializedBinaryTree);
+
+			*/
+
+
+			/**************Anagram Validity*************
+			string s1 = "anagram";
+			string s2 = "naagram";
+
+			StringSolution s = new StringSolution();
+			Console.WriteLine(s.IsAnagram(s1, s2));	
+
+			*/
+
+			/************Group Anagrams****************
+
+			ArraySolution a = new ArraySolution();
+
+			string[] s = new string[6] { "eat", "tea", "tan", "ate", "nat", "bat" };
+
+			Console.WriteLine(a.GroupAnagrams(s));
+			*/
+
+			/*************Generate Parentheses****************************
+
+			int input  = 3;
+
+			RecursiveSolution r = new RecursiveSolution();
+
+			r.GenerateParenthesis(input);
+
+			*/
+
+			/*************Factor Combinations*****************
+
+			int number = 12;
+
+			RecursiveSolution r = new RecursiveSolution();
+
+			r.GetFactors(number);
+
+			**********/
 
 			/*********************Regular Expression Matching----------unfinished**************************************
 			   if the next character in p is *, 
@@ -847,8 +1166,57 @@ namespace Winter
 				isMatch("aab", "c*a*b") → true
 				*/
 
-			Console.ReadLine();
+			/********Word Break 2 (sentence formation)...........incomplete*****************************
+
+			DynamicSolution d = new DynamicSolution();
+
+			string input = "catsanddog";
+			List<string> dict = new List<string>();
+
+			dict.Add("cat");
+			dict.Add("cats");
+			dict.Add("and");
+			dict.Add("sand");
+			dict.Add("dog");
+
+			bool output = d.WordBreak2(input, dict);
+
+			Console.WriteLine(output);
+
+			*/
+			/********One Edit Distance*******************************************************************
+
+			string word1 = "akm";
+			string word2 = "bakm";
+
+			StringSolution s = new StringSolution();
+			Console.WriteLine(s.IsOneEditDistance(word1, word2));
+			*/
 			
+
+			/********Edit Distance*******O(nm)****************************************************************
+
+			string word1 = "geaks";
+			string word2 = "geeks";
+
+			DynamicSolution d = new DynamicSolution();
+
+			Console.WriteLine(d.MinDistance(word1, word2));
+			
+			*/
+			/* My alexa app
+
+			Rater r = new Rater();
+
+			Dictionary<string, string> output = r.GetAverageRateForState("CA");
+
+
+
+			Console.WriteLine("Answer " + output.First().Key + "Value " + output.First().Value);
+			*/
+
+			Console.ReadKey();
+			  
 		}
 
 		static Node1 insert(Node1 root, int data)

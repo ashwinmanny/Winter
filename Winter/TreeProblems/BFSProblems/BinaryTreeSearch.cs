@@ -82,6 +82,23 @@ namespace Winter.Searching
 			return values;
 		}
 
+		public List<BinaryTreeNode> lisOfTreeNode = new List<BinaryTreeNode>();
+		public List<BinaryTreeNode> PreorderTraversalRecursion(BinaryTreeNode root)
+		{
+			if (root == null)
+			{
+				lisOfTreeNode.Add(new BinaryTreeNode(-1));
+			}
+			else
+			{
+				lisOfTreeNode.Add(root);
+				this.PreorderTraversalRecursion(root.left);
+				this.PreorderTraversalRecursion(root.right);
+			}
+
+			return lisOfTreeNode;
+		}
+
 		public IList PostorderTraversal(BinaryTreeNode root)
 		{
 			var values = new List<int>();

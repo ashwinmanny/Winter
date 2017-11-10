@@ -52,31 +52,6 @@ namespace Winter.SortingProblems
 			return i + 1;
 		}
 
-		public int[] TwoSum(int[] numbers, int target)
-		{
-			int[] output = new int[2];
-			for (int i = 0, j = numbers.Length-1; i < j;  )
-			{
-				
-				if (numbers[i] + numbers[j] == target)
-				{
-					output[0] = i+1;
-					output[1] = j+1;
-					return output;
-				}
-				else if (numbers[i] + numbers[j] < target)
-				{
-					i++;
-				}
-				else
-				{
-					j--;
-				}
-			}
-
-			return output;
-		}
-
 		public double FindMedianSortedArrays(int[] nums1, int[] nums2)
 		{
 			List<int> sortedlist = new List<int>();

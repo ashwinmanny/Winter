@@ -36,20 +36,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayProblems\ArraySolution.cs" />
+    <Compile Include="ArrayProblems\RandomizedSet.cs" />
     <Compile Include="DirectoryNode.cs" />
     <Compile Include="LinkedListsProblems\LinkedListSolution.cs" />
     <Compile Include="MathProblems\MathSolution.cs" />
     <Compile Include="Node1.cs" />
+    <Compile Include="Rater.cs" />
     <Compile Include="Recursion\RecursiveSolution.cs" />
-    <Compile Include="Searching\BFS.cs" />
-    <Compile Include="DFS.cs" />
-    <Compile Include="DFSProblems\Solution.cs" />
+    <Compile Include="TreeProblems\BFSProblems\BFS.cs" />
+    <Compile Include="TreeProblems\BinaryTreeSolution.cs" />
+    <Compile Include="TreeProblems\DFSProblems\DFS.cs" />
+    <Compile Include="TreeProblems\DFSProblems\Solution.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DynamicProblems\DynamicSolution.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Point.cs" />
-    <Compile Include="BinaryTreeNode.cs" />
-    <Compile Include="Searching\BinaryTreeSearch.cs" />
+    <Compile Include="TreeProblems\BinaryTreeNode.cs" />
+    <Compile Include="TreeProblems\BFSProblems\BinaryTreeSearch.cs" />
     <Compile Include="SortingProblems\SortingSolution.cs" />
     <Compile Include="StackProblems\StackSolution.cs" />
     <Compile Include="StringProblems\StringSolution.cs" />

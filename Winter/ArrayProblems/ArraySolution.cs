@@ -8,10 +8,311 @@ namespace Winter.ArrayProblems
 {
 	class ArraySolution
 	{
+		public int[] TwoSum(int[] numbers, int target)
+		{
+			int[] output = new int[2];
+
+			//use two pointer from front and back
+			for (int i = 0, j = numbers.Length - 1; i < j; )
+			{
+
+				if (numbers[i] + numbers[j] == target)
+				{
+					output[0] = i + 1;
+					output[1] = j + 1;
+					return output;
+				}
+				else if (numbers[i] + numbers[j] < target)
+				{
+					i++;
+				}
+				else
+				{
+					j--;
+				}
+			}
+
+			return output;
+		}
+
+		//for sorted
+		public IList<IList<int>> TwoSum2(int[] numbers, int target)
+		{
+			IList<IList<int>> res = new List<IList<int>>();
+
+			//use two pointer from front and back
+			for (int i = 0, j = numbers.Length - 1; i < j; )
+			{
+
+				if (numbers[i] + numbers[j] == target)
+				{
+					res.Add((new List<int> { numbers[i], numbers[j] }));
+					return res;
+				}
+				else if (numbers[i] + numbers[j] < target)
+				{
+					i++;
+				}
+				else
+				{
+					j--;
+				}
+			}
+
+			return res;
+		}
+
+		public int[] TwoSumUnsorted(int[] nums, int target)
+		{
+			var dict = new Dictionary<int, int>();
+
+			//use dictionary to store difference
+			for (int i = 0; i < nums.Length; i++)
+			{
+				var aim = target - nums[i];
+
+				if (dict.ContainsKey(aim))
+				{
+					return new int[] { dict[aim], i };
+				}
+				else
+				{
+					if (!dict.ContainsKey(nums[i]))
+					{
+						dict.Add(nums[i], i);
+					}
+				}
+
+			}
+
+			return null;
+		}
+
+		public IList<IList<int>> ThreeSum(int[] nums)
+		{
+			var result = new List<List<int>>();
+
+			Array.Sort(nums); // -4, -1, -1, 0, 1, 2;
+			for (var i = 0; i < nums.Length; i++)
+			{
+				// skip duplicates
+				if (i != 0 && nums[i - 1] == nums[i]) //for corner case of making sure that result has unique combinations of arrays
+				{
+					continue;
+				}
+
+				int next = i + 1;
+				int last = nums.Length - 1;
+
+				while (next < last)
+				{
+					// skip duplicates
+					if (next != i + 1 && nums[next] == nums[next - 1]) // [0,0,0,0] for corner case of making sure that result has unique combinations of arrays
+					{
+						next++;
+						continue;
+					}
+
+					int sum = nums[i] + nums[next] + nums[last];
+
+					if (sum == 0)
+					{
+						result.Add(new List<int>() { nums[i], nums[next], nums[last] });
+						next++;
+					}
+					else if(sum < 0)
+					{
+						next++;
+					}
+					else{
+						last--;
+					}
+
+
+				}
+
+			}
+
+			return result.ToArray();
+		}
+
+		public int ThreeSumClosest(int[] nums, int target) 
+		{
+			int min = Int16.MaxValue;
+			int result = 0;
+
+			Array.Sort(nums);
+
+			for (int i = 0; i < nums.Length; i++)
+			{
+			    int j = i+1; 			
+			    int k = nums.Length - 1;
+
+				while (j < k)
+				{
+					int sum = nums[i] + nums[j] + nums[k];
+					int diff = Math.Abs(sum - target);
+
+					if (diff == 0)
+					{
+						return sum;
+					}
+					if (diff < min)
+					{
+						min = diff;
+						result = sum;
+					}
+					if (sum < target)
+					{
+						j++;
+					}
+					else
+					{
+						k--;
+					}
+				}				   
+			}
+			return result;
+		}
+
+		public int ThreeSumSmaller(int[] nums, int target)
+		{
+			
+			Array.Sort(nums);
+			int result = 0;
+
+			for (int i = 0; i < nums.Length; i++)
+			{
+				int j = i + 1;
+				int k = nums.Length-1;
+
+				while (j < k)
+				{
+					int sum = nums[i] + nums[j] + nums[k];
+
+					if (sum < target)
+					{
+						result = result + (k - j);
+						j++;
+					}
+					else
+					{
+						k--;
+					}
+				}
+			}
+			return result;
+			/*
+
+			int count = 0;
+			Array.Sort(nums);
+			int len = nums.Length;
+
+			for (int i = 0; i < len - 2; i++)
+			{
+				int left = i + 1, right = len - 1;
+				while (left < right)
+				{
+					if (nums[i] + nums[left] + nums[right] < target)
+					{
+						count += right - left;
+						left++;
+					}
+					else
+					{
+						right--;
+					}
+				}
+			}
+
+			return count;
+			 * */
+		}
+
+		public IList<IList<int>> FourSum(int[] nums, int target)
+		{
+			var res = new List<List<int>>();
+			nums = nums.OrderBy(x => x).ToArray();
+
+			var len = nums.Length;
+			for (var i = 0; i < len; i++)
+			{
+				// skip duplicates
+				if (i != 0 && nums[i] == nums[i - 1]) continue;
+
+				for (var j = i + 1; j < len; j++)
+				{
+					// skip duplicates
+					if (j != i + 1 && nums[j] == nums[j - 1]) continue;
+
+					int k = j + 1, l = len - 1;
+					while (k < l)
+					{
+						var sum = nums[i] + nums[j] + nums[k] + nums[l];
+						if (sum == target)
+						{
+							var onesulution = new List<int>() { nums[i], nums[j], nums[k], nums[l] };
+							res.Add(onesulution);
+							k++;
+						}
+						else if (sum < target)
+						{
+							k++;
+						}
+						else
+						{
+							l--;
+						}
+						// skip duplicates
+						while (k < l && k != j + 1 && nums[k] == nums[k - 1])
+						{
+							k++;
+						}
+						// skip duplicates
+						while (k < l && l != len - 1 && nums[l] == nums[l + 1])
+						{
+							l--;
+						}
+					}
+				}
+			}
+
+			return res.ToArray();
+		}
+
+		public IList<IList<int>> AllSubsetsOfSet(int[] nums)
+		{
+			List<List<int>> fulllist = new List<List<int>>();
+
+			double pow = Math.Pow(2, nums.Length);
+
+			int i, j;
+
+			/*Run from counter (i) 000..0 to binary representation of 2^n */
+			for (i = 0; i < pow; i++)
+			{
+				List<int> list = new List<int>();
+				for (j = 0; j < nums.Length; j++)
+				{
+					/* Check if jth bit in the counter is set
+					   If set then print jth element from set */
+					if ((i & (1 << j)) > 0)
+					{
+						list.Add(nums[j]);
+					}
+				}
+				fulllist.Add(list);
+			}
+
+			return fulllist.ToArray();
+
+		}
+
 		public long TotalAllEvenNumbers(int[] intArray)
 		{
 			return (from i in intArray where i % 2 == 0 select (long)i).Sum();
 		}
+
 		public int MaxSubArray(int[] nums)
 		{
 			int total_max = nums[0];
@@ -93,31 +394,6 @@ namespace Winter.ArrayProblems
 			}
 
 			return result.ToArray();
-		}
-
-		public int[] TwoSumUnsorted(int[] nums, int target)
-		{
-			var dict = new Dictionary<int, int>();
-
-			for (int i = 0; i < nums.Length; i++)
-			{
-				var aim = target - nums[i];
-
-				if (dict.ContainsKey(aim))
-				{
-					return new int[] { dict[aim], i };
-				}
-				else
-				{
-					if (!dict.ContainsKey(nums[i]))
-					{
-						dict.Add(nums[i], i);
-					}
-				}
-
-			}
-
-			return null;
 		}
 
 		public bool CheckSubarraySum(int[] nums, int k)
@@ -598,6 +874,270 @@ namespace Winter.ArrayProblems
 
 			return count;
 
+		}
+
+		public bool WordPattern(string pattern, string str)
+		{
+			string[] words = str.Split(' ');
+
+			if (pattern.Length != words.Length)
+			{
+				return false;
+			}
+
+			Dictionary<char, string> dictOcc = new Dictionary<char, string>();
+
+			for (int i = 0; i < words.Length; i++)
+			{
+				if (!(dictOcc.ContainsKey(pattern[i])))
+				{
+					if (!(dictOcc.ContainsValue(words[i])))
+					{
+						dictOcc.Add(pattern[i], words[i]);
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					if (dictOcc[pattern[i]] != words[i])
+					{
+						return false;
+					}
+				}
+			}
+
+
+			return true;
+		}
+
+		public bool IsValidSudoku(char[,] board)
+		{
+			// for rows
+
+			Dictionary<char, bool> dict;
+
+			for (int i = 0; i < 9; i++)
+			{
+				dict = new Dictionary<char, bool>();
+				for (int j = 0; j < 9; j++)
+				{
+					if (board[i, j] == '.')
+					{
+						continue;
+					}
+
+					if (dict.ContainsKey(board[i, j]))
+					{
+						return false;
+					}
+
+					dict.Add(board[i, j], true);
+
+				}
+			}
+
+			// for columns
+
+			for (int i = 0; i < 9; i++)
+			{
+				dict = new Dictionary<char, bool>();
+				for (int j = 0; j < 9; j++)
+				{
+					if (board[j, i] == '.')
+					{
+						continue;
+					}
+
+					if (dict.ContainsKey(board[j, i]))
+					{
+						return false;
+					}
+
+					dict.Add(board[j, i], true);
+
+				}
+			}
+
+			// for squares
+
+			for(int i =0; i <3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					dict = new Dictionary<char, bool>();
+
+					for (var m = 0; m < 3; m++)
+					{
+						for (var n = 0; n < 3; n++)
+						{
+							if (board[i * 3 + m,j * 3 + n] == '.')
+							{
+								continue;
+							}
+
+							if (dict.ContainsKey(board[i * 3 + m, j * 3 + n]))
+							{
+								return false;
+							}
+
+							dict.Add(board[i * 3 + m, j * 3 + n], true);
+						}
+					}
+				}
+
+			}
+
+			return true;
+		}
+
+		public void SolveSudoku(char[,] board)
+		{
+			if (board == null || board.Length == 0)
+				return;
+			Console.WriteLine(solve(board));
+		}
+
+		public bool solve(char[,] board)
+		{
+			for (int i = 0; i < board.Length; i++)
+			{
+				for (int j = 0; j < board.Length; j++)
+				{
+					if (board[i,j] == '.')
+					{
+						for (char c = '1'; c <= '9'; c++)
+						{//trial. Try 1 through 9
+							if (isValid(board, i, j, c))
+							{
+								board[i,j] = c; //Put c for this cell
+
+								if (solve(board))
+									return true; //If it's the solution return true
+								else
+									board[i,j] = '.'; //Otherwise go back
+							}
+						}
+
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
+		public bool isValid(char[,] board, int row, int col, char c)
+		{
+			for (int i = 0; i < 9; i++)
+			{
+				if (board[i,col] != '.' && board[i,col] == c) return false; //check row
+				if (board[row,i] != '.' && board[row,i] == c) return false; //check column
+				if (board[3 * (row / 3) + i / 3,3 * (col / 3) + i % 3] != '.' &&
+	board[3 * (row / 3) + i / 3,3 * (col / 3) + i % 3] == c) return false; //check 3*3 block
+			}
+			return true;
+		}
+
+		public String replaceWords(List<String> dict, String sentence) 
+		{
+			if (dict == null || dict.Count == 0)
+			{
+				return sentence;
+			}
+        
+			// increase efficiency
+			HashSet<String> set = new HashSet<String>();
+			foreach (String s in dict) 
+			{
+				set.Add(s);
+			}
+        
+			StringBuilder sb = new StringBuilder();
+			String[] words = sentence.Split(' ');
+        
+			foreach (String word in words) 
+			{
+				String prefix = "";
+				for (int i = 1; i <= word.Length; i++) {
+					prefix = word.Substring(0, i);
+					if (set.Contains(prefix))
+					{
+						break;
+					}
+				}
+				sb.Append(" " + prefix);
+			}
+        
+            return sb.Remove(0,1).ToString();
+       }
+
+		public IList<IList<string>> GroupAnagrams(string[] strs)
+		{
+			Dictionary<string, List<string>> output = new Dictionary<string, List<string>>();
+
+			foreach (string s in strs)
+			{
+				var strsorted = Alphabetize(s);
+				if (output.ContainsKey(strsorted))
+				{
+					output[strsorted].Add(s);
+				}
+				else
+				{
+					output.Add(strsorted, new List<string>() { s });
+				}
+			}
+
+			return output.Values.ToList().ToArray();
+		}
+
+		public static string Alphabetize(string s)
+		{
+			// 1.
+			// Convert to char array.
+			char[] a = s.ToCharArray();
+
+			// 2.
+			// Sort letters.
+			Array.Sort(a);
+
+			// 3.
+			// Return modified string.
+			return new string(a);
+		}
+
+		public IList<int> FallingSquares(int[,] positions)
+		{
+			int[] qans = new int[positions.GetLength(0)];
+			for (int i = 0; i < positions.GetLength(0); i++) 
+			{
+				int left = positions[i,0];
+				int size = positions[i,1];
+				int right = left + size;
+				qans[i] = qans[i] + size;
+
+				for (int j = i+1; j < positions.GetLength(0); j++) 
+				{
+					int left2 = positions[j,0];
+					int size2 = positions[j,1];
+					int right2 = left2 + size2;
+					if (left2 < right && left < right2) 
+					{ //intersect
+						qans[j] = Math.Max(qans[j], qans[i]);
+				    }
+                }
+            }
+
+			List<int> ans = new List<int>();
+			int cur = -1;
+			foreach (int x in qans) 
+			{
+				cur = Math.Max(cur, x);
+				ans.Add(cur);
+			}
+			return ans;
 		}
     }
 

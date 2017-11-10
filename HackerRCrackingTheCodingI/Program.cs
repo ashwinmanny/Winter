@@ -146,7 +146,7 @@ namespace HackerRCrackingTheCodingI
 			*/
 			
 
-			/** Heaps: Find the Running Median (Inefficient but correct) *
+			/** Heaps: Find the Running Median (Inefficient but correct) 
 			
 			int n = Convert.ToInt32(Console.ReadLine());
             int[] a = new int[n];
@@ -337,7 +337,6 @@ namespace HackerRCrackingTheCodingI
 		   long k = MakeChange(n, coins);
 		   Console.WriteLine(k);
 		    */
-
 
 		   Console.ReadKey();
 
@@ -768,7 +767,7 @@ namespace HackerRCrackingTheCodingI
 			Console.WriteLine("Last Element: {0} ", a[n-1]);
 		}
 
-		// Heaps: Find the Running Median (Inefficient)
+		// Heaps: Find the Running Median (Inefficient) O(n) - Efficient way is to do by heaps (a min heap and a max heap) O(logn)
 		private static void RunningMedian(int[] a, int n)
 		{
 			for (int j = 0; j < n; j++)
@@ -791,17 +790,9 @@ namespace HackerRCrackingTheCodingI
 				}
 				else
 				{
-					if (j == 0)
-					{
-						output = b[0];
-					}
-					else
-					{
-						output = b[j / 2];
-					}
-
+					output = b[j / 2];
 					Console.WriteLine(string.Format("{0:F1}", output));
-				}
+				}		
 			}
 		}
 		

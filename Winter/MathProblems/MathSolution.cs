@@ -9,41 +9,6 @@ namespace Winter.MathProblems
 {
 	class MathSolution
 	{
-		public double MyPow(double x, int n)
-		{
-			double value = 0;
-			var sign = n > 0;
-			value = MyPowByDD(x, n);
-
-			return sign?value:1/value;
-		}
-
-		public double MyPowByDD(double x, int n)
-		{
-			double value = 0;
-			if (n == 0)
-			{
-				return 1;
-			}
-			else if (n == 1)
-			{
-				return x;
-			}
-			else
-			{
-				if (n % 2 == 0)
-				{
-					value = MyPowByDD(x * x, n / 2);
-				}
-				else
-				{
-					value = x * MyPowByDD(x * x, n / 2);
-				}
-
-			}
-
-			return value;
-		}
 
 		public int MyAtoi(string str)
 		{
@@ -220,6 +185,20 @@ namespace Winter.MathProblems
 			}
 
 			return max;
+		}
+
+		public int MinDistance(int height, int width, int[] tree, int[] squirrel, int[,] nuts)
+		{
+			int sum = 0, maxDiff = int.MinValue;
+
+			for (int i = 0; i < nuts.GetLength(0); i++)
+			{
+				int dist = Math.Abs(tree[0] - nuts[i,0]) + Math.Abs(tree[1] - nuts[i,1]);// distance fron nut to tree
+				sum = sum + 2 * dist;// back and forth doubles the distance
+				maxDiff = Math.Max(maxDiff, dist - Math.Abs(squirrel[0] - nuts[i, 0]) - Math.Abs(squirrel[1] - nuts[i, 1]));//first visited nut, the saving obtained
+			}
+
+			return sum - maxDiff;
 		}
 	}
 }

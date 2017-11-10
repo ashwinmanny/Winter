@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DesignPattern.cs" />
     <Compile Include="Inheritance.cs" />
+    <Compile Include="MultiThreading.cs" />
     <Compile Include="Polymorphism.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

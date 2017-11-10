@@ -24,6 +24,42 @@ namespace Winter.Recursion
 			}
 		}
 
+		public double MyPow(double x, int n)
+		{
+			double value = 0;
+			var sign = n > 0;
+			value = MyPowByDD(x, n);
+
+			return sign ? value : 1 / value;
+		}
+
+		public double MyPowByDD(double x, int n)
+		{
+			double value = 0;
+			if (n == 0)
+			{
+				return 1;
+			}
+			else if (n == 1)
+			{
+				return x;
+			}
+			else
+			{
+				if (n % 2 == 0)
+				{
+					value = MyPowByDD(x * x, n / 2);
+				}
+				else
+				{
+					value = x * MyPowByDD(x * x, n / 2);
+				}
+
+			}
+
+			return value;
+		}
+
 		//----------1. N-Queen Problem----------------------//
 
 		public IList<string[]> SolveNQueens(int n)
@@ -198,6 +234,120 @@ namespace Winter.Recursion
 			}
 
 			return output.Trim();
+		}
+
+		private List<string> strlist = new List<string>();
+		public IList<string> GenerateParenthesis(int n)
+		{
+			GenerateParenthesisHelper(n, n, string.Empty);
+			return strlist;
+		}
+
+		private void GenerateParenthesisHelper(int left, int right, string result)
+		{
+			if (left == 0 && right == 0)
+			{
+				strlist.Add(result);
+				return;
+			}
+
+			if (left > 0)
+			{
+				GenerateParenthesisHelper(left - 1, right, result + '(');
+			}
+
+			if (right > left)
+			{
+				GenerateParenthesisHelper(left, right - 1, result + ')');
+			}
+		}
+
+		public IList<IList<int>> GetFactors(int n)
+		{
+			IList<int> temp = new List<int>();
+			IList<IList<int>> result = new List<IList<int>>();
+			if (n < 4) return result;
+			Helper(n, 2, temp, result, n);
+			return result;
+		}
+
+		public static void Helper(int n, int factor, IList<int> temp, IList<IList<int>> result, int ori)
+		{
+			int sqrt = Convert.ToInt32(Math.Floor(Math.Sqrt(n)));
+			if (factor > n) return;
+			if (n != ori)
+			{
+				IList<int> temp1 = new List<int>(temp);
+				temp1.Add(n);
+				result.Add(temp1);
+			}
+			for (int i = factor; i <= sqrt; i++)
+			{
+				if (n % i == 0)
+				{
+					IList<int> temp2 = new List<int>(temp);
+					temp2.Add(i);
+					Helper(n / i, i, temp2, result, ori);
+				}
+			}
+		}
+
+		/**More efficient but requires proper java to c# translation
+		 
+			public static List<List<int>> getFactors(int n)
+			{
+				List<List<int>> res = new List<List<int>>();
+
+				helper(res, new List<int>(), 2, n);
+				return res;
+			}
+
+			public static void helper(List<List<int>> res, List<int> list, int s, int n)
+			{
+				for (int i = s; i <= Math.Sqrt(n); i++)
+				{
+					int x = n / i;
+					if (n % i == 0)
+					{
+						list.Add(i);
+						list.Add(x);
+						res.Add(new List<int>(list));
+						list.Remove(list.Count - 1);
+						helper(res, list, i, x);
+						list.Remove(list.Count - 1);
+					}
+				}
+			}
+		 */
+
+		Dictionary<char, String> map = new Dictionary<char, String>();
+		public bool WordPattern2(String pattern, String str)
+		{
+			if (pattern.Length == 0)
+				return str.Length == 0;
+
+			if (map.ContainsKey(pattern[0]))
+			{
+				String value = map[pattern[0]];
+				if (value.Length > str.Length || !str.Substring(0, value.Length).Equals(value))
+					return false;
+				if (WordPattern2(pattern.Substring(1), str.Substring(value.Length)))
+					return true;
+			}
+			else
+			{
+				for (int i = 1; i <= str.Length; i++)
+				{
+					if (map.ContainsValue(str.Substring(0, i))) continue;
+					map.Add(pattern[0], str.Substring(0, i));
+					if (WordPattern2(pattern.Substring(1), str.Substring(i)))
+					{
+						return true;
+					}
+					map.Remove(pattern[0]);
+				}
+			}
+			return false;
 		}
 	}
 }

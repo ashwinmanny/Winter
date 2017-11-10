@@ -628,5 +628,51 @@ namespace Winter
 			return length;
 		}
 
+		public bool isOneEditDistance(String s, String t)
+		{
+			for (int i = 0; i < Math.Min(s.Length, t.Length); i++)
+			{
+				if (s[i] != t[i])
+				{
+					if (s.Length == t.Length) // s has the same length as t, so the only possibility is replacing one char in s and t
+						return s.Substring(i + 1).Equals(t.Substring(i + 1));
+					else if (s.Length < t.Length) // t is longer than s, so the only possibility is deleting one char from t
+						return s.Substring(i).Equals(t.Substring(i + 1));
+					else // s is longer than t, so the only possibility is deleting one char from s
+						return t.Substring(i).Equals(s.Substring(i + 1));
+				}
+			}
+			//All previous chars are the same, the only possibility is deleting the end char in the longer one of s and t 
+			return Math.Abs(s.Length - t.Length) == 1;
+		}
+
+		public bool IsAnagram(string s, string t)
+		{
+
+			if (s.Length != t.Length)
+			{
+				return false;
+			}
+			char[] sArray = s.ToCharArray();
+			char[] tArray = t.ToCharArray();
+
+			Array.Sort(sArray);
+			Array.Sort(tArray);
+
+			/*
+			for(int i =0; i < sArray.Length; i++)
+			{
+			  if(sArray[i] != tArray[i])
+			  {
+				return false;
+			  }
+			}
+			*/
+
+			//Array.Equals(sArray, tArray);
+
+			return sArray.SequenceEqual(tArray);
+		}
+
 	}
 }

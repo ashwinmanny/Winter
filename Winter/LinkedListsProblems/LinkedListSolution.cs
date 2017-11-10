@@ -8,6 +8,24 @@ namespace Winter.LinkedListsProblems
 {
 	public class LinkedListSolution
 	{
+		static public LinkedListNode ReverseList(LinkedListNode head)
+		{
+			LinkedListNode prevNode = null; // output
+
+			LinkedListNode temp = null; //to hold next node
+
+			LinkedListNode currNode = head;
+
+			while (currNode != null)
+			{
+				temp = currNode.next;
+				currNode.next = prevNode;
+				prevNode = currNode;
+				currNode = temp;
+			}
+
+			return prevNode;
+		}
 
 		static public LinkedListNode MergeKLists(LinkedListNode[] lists)
 		{
