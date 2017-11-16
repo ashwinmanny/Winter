@@ -112,5 +112,85 @@ namespace Winter.TreeProblems
 			return root;
 		}
 
+
+		public IList<int> BoundaryOfBinaryTree(BinaryTreeNode root)
+		{
+			List<int> output = new List<int>();
+
+			if (root == null) return output.ToArray();
+			
+			output.Add(root.val);
+
+			if (!(root.left == null && root.right == null)) //for corner case of single node
+			{
+				BoundaryOfBinaryTreeLeft(root.left, output); // add all left nodes except leftmost leaf node
+				BinaryTreeLeaves(root, output);// add all leaf nodes
+				BoundaryOfBinaryTreeRight(root.right, output);// add all right nodes except rightmost leaf node
+		    }
+			
+
+			return output.ToArray();
+
+		}
+
+		private void BoundaryOfBinaryTreeLeft(BinaryTreeNode binaryTreeNode, List<int> output)
+		{
+			if (binaryTreeNode != null)
+			{
+				if (binaryTreeNode.left != null)
+				{
+					output.Add(binaryTreeNode.val);
+					BoundaryOfBinaryTreeLeft(binaryTreeNode.left, output);
+				}
+				else
+				{
+					if (binaryTreeNode.right != null)
+					{
+						output.Add(binaryTreeNode.val);
+						BoundaryOfBinaryTreeLeft(binaryTreeNode.right, output);
+					}
+				}
+			}
+		}
+
+		private void BinaryTreeLeaves(BinaryTreeNode root, List<int> output)
+		{
+			if (root != null)
+			{
+				if (root.left == null && root.right == null)
+				{
+						output.Add(root.val);
+				}
+				else
+				{
+					BinaryTreeLeaves(root.left, output);
+					BinaryTreeLeaves(root.right, output);
+				}
+			}
+		}
+
+		private void BoundaryOfBinaryTreeRight(BinaryTreeNode binaryTreeNode, List<int> output)
+		{
+			if (binaryTreeNode != null)
+			{
+				if (binaryTreeNode.right != null)
+				{
+					BoundaryOfBinaryTreeRight(binaryTreeNode.right, output);
+				}
+				else
+				{
+					if (binaryTreeNode.left != null)
+					{
+						BoundaryOfBinaryTreeRight(binaryTreeNode.left, output);
+					}
+					else
+					{
+						return;
+					}
+				}
+				output.Add(binaryTreeNode.val);
+			}
+		}
+
 	}
 }

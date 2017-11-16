@@ -55,6 +55,13 @@ namespace CsharpConcepts
 			Console.WriteLine(name);
 		}
 
+		public void PrintDummyDetails()
+		{
+			Console.WriteLine(" ");
+			Console.WriteLine("1");
+			Console.WriteLine("Testing");
+		}
+
 		public void Sqrt(int x)
 		{
 			Console.WriteLine("Square is {0}", x * x);

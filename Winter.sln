@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerRCrackingTheCodingI",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpOOConcepts", "CsharpConcepts\CsharpOOConcepts.csproj", "{74BE0C64-733D-4133-AB21-1D33BFB82A06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterUnitTests", "WinterUnitTests\WinterUnitTests.csproj", "{AA77B144-E8FD-44C3-A243-EFE84AECC870}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74BE0C64-733D-4133-AB21-1D33BFB82A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA77B144-E8FD-44C3-A243-EFE84AECC870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA77B144-E8FD-44C3-A243-EFE84AECC870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA77B144-E8FD-44C3-A243-EFE84AECC870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA77B144-E8FD-44C3-A243-EFE84AECC870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

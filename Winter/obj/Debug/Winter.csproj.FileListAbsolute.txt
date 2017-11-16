@@ -1,6 +1,6 @@
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\bin\Debug\Winter.exe.config
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\bin\Debug\Winter.exe
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\bin\Debug\Winter.pdb
-C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\obj\Debug\Winter.csprojResolveAssemblyReference.cache
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\obj\Debug\Winter.exe
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\obj\Debug\Winter.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\Winter\obj\Debug\Winter.csprojResolveAssemblyReference.cache

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Winter.MathProblems
 {
-	class MathSolution
+    public class MathSolution
 	{
 
 		public int MyAtoi(string str)

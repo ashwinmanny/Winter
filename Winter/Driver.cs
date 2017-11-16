@@ -403,13 +403,13 @@ namespace Winter
 			  
 			 */
 
-			/**************************************************** String to Integer (atoi) ********
+			/**************************************************** String to Integer (atoi) *******
 
 			MathSolution m = new MathSolution();
 
 			Console.WriteLine("String to integer " + m.MyAtoi("-0.3"));
-			 * 
-			 **/
+			 
+	        */
 
 			/****************************************************  N-Queen Problem (Not over)*******
 			RecursiveSolution r = new RecursiveSolution();
@@ -1091,6 +1091,61 @@ namespace Winter
 			Console.WriteLine(a.replaceWords(l, input));
 			 * 
 			 * */
+
+			/*****************************Spiral Matrix**********************************************
+
+			ArraySolution a = new ArraySolution();
+
+			int[,] matrix = new int[4, 4] { { 1, 2, 3, 11 }, { 4, 5, 6, 12 }, { 7, 8, 9, 13 }, { 14, 15, 16, 17 } };
+
+			//int[,] matrix = new int[3, 3] { { 1, 2, 3}, { 4, 5, 6}, { 7, 8, 9} };
+
+			List<int> output = a.SpiralOrder(matrix).ToList();
+
+			foreach (int item in output)
+			{
+				Console.Write(item);
+				Console.Write(" ");
+			}
+
+			*/
+
+			/**********************************Boundary of Binary Tree***********************
+
+			BinaryTreeNode a = new BinaryTreeNode(1);
+			BinaryTreeNode b = new BinaryTreeNode(2);
+			BinaryTreeNode c = new BinaryTreeNode(3);
+			BinaryTreeNode d = new BinaryTreeNode(4);
+			BinaryTreeNode e = new BinaryTreeNode(5);
+			BinaryTreeNode f = new BinaryTreeNode(6);
+			BinaryTreeNode g = new BinaryTreeNode(7);
+			BinaryTreeNode h = new BinaryTreeNode(8);
+			BinaryTreeNode i = new BinaryTreeNode(9);
+			BinaryTreeNode j = new BinaryTreeNode(10);
+
+		    
+			a.left = b;
+			a.right = c;
+			b.left = d;
+			b.right = e;
+			c.left = f;
+			e.left = g;
+			e.right = h;
+			f.left = i;
+			f.right = j;
+			
+
+			BinaryTreeSolution bt = new BinaryTreeSolution();
+
+			List<int> output = bt.BoundaryOfBinaryTree(a).ToList();
+
+			foreach (int item in output)
+			{
+				Console.Write(item);
+				Console.Write(" ");
+			}
+			*/
+
 
 			/*********************Serialize and Deserialize Binary Tree**************
 

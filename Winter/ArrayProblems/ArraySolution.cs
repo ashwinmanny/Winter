@@ -1139,6 +1139,101 @@ namespace Winter.ArrayProblems
 			}
 			return ans;
 		}
+
+		public bool IsOneBitCharacter(int[] bits)
+		{
+
+			bool output = false;
+
+			if (bits.Length == 1)
+			{
+				output = true;
+			}
+
+			for (int i = 0; i < bits.Length; )
+			{
+				if (!(bits[i] == 0))
+				{
+					i = i + 2;
+				}
+				else
+				{
+					i++;
+				}
+
+				if (i == (bits.Length - 1))
+				{
+					output = true;
+				}
+
+			}
+
+
+			return output;
+		}
+
+		public IList<int> SpiralOrder(int[,] matrix)
+		{
+			List<int> outputList = new List<int>();
+
+			int row = matrix.GetLength(0);
+			int column = matrix.GetLength(1);
+
+			Tuple<int, int> left = new Tuple<int, int>(0, 0); 
+			Tuple<int, int> right = new Tuple<int, int>(0, column-1);
+			Tuple<int, int> rightBottom = new Tuple<int, int>(row - 1, column-1);
+			Tuple<int, int> leftBottom = new Tuple<int, int>(row - 1, 0);
+
+
+			for (int i = 0; i < row; i++)
+			{
+				if (outputList.Count != matrix.Length)
+				{
+					int leftTopCorner = left.Item2;
+
+					while ((leftTopCorner <= right.Item2) && outputList.Count != matrix.Length)
+					{
+						outputList.Add(matrix[left.Item1, leftTopCorner]);
+						leftTopCorner++;
+					}
+
+					int rightTopCorner = right.Item1 + 1;
+
+					while ((rightTopCorner <= rightBottom.Item1) && outputList.Count != matrix.Length)
+					{
+						outputList.Add(matrix[rightTopCorner, rightBottom.Item2]);
+						rightTopCorner++;
+					}
+
+
+					int rightBottomCorner = rightBottom.Item2 - 1;
+
+					while ((rightBottomCorner >= leftBottom.Item2) && outputList.Count != matrix.Length)
+					{
+						outputList.Add(matrix[rightBottom.Item1, rightBottomCorner]);
+						rightBottomCorner--;
+					}
+
+					int leftBottomCorner = leftBottom.Item1 - 1;
+
+					while ((leftBottomCorner > left.Item1) && outputList.Count != matrix.Length)
+					{
+						outputList.Add(matrix[leftBottomCorner, leftBottom.Item2]);
+						leftBottomCorner--;
+					}
+
+
+					left = new Tuple<int, int>(left.Item1 + 1, left.Item2 + 1);
+					right = new Tuple<int, int>(right.Item1 + 1, right.Item2 - 1);
+					rightBottom = new Tuple<int, int>(rightBottom.Item1 - 1, rightBottom.Item2 - 1);
+					leftBottom = new Tuple<int, int>(leftBottom.Item1 - 1, leftBottom.Item2 + 1);
+				}
+
+			}
+
+			return outputList.ToArray<int>();
+		}
+
     }
 
     public class Interval
