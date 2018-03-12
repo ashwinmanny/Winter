@@ -213,7 +213,6 @@ namespace Winter
 			{
 				StringBuilder input = new StringBuilder();
 				input.Append(s);
-
 				input.Remove(i, 1);
 
 				if (IsPalindrome(input.ToString()))
