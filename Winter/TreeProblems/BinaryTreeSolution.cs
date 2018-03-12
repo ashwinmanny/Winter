@@ -192,5 +192,117 @@ namespace Winter.TreeProblems
 			}
 		}
 
+		public BinaryTreeNode insert(BinaryTreeNode root, int data)
+		{
+			if (root == null)
+			{
+				return new BinaryTreeNode(data);
+			}
+			else
+			{
+				BinaryTreeNode cur;
+				if (data <= root.val)
+				{
+					cur = insert(root.left, data);
+					root.left = cur;
+				}
+				else
+				{
+					cur = insert(root.right, data);
+					root.right = cur;
+				}
+				return root;
+			}
+		}
+
+		public int getHeight(BinaryTreeNode root)
+		{
+			if (root == null)
+			{
+				return 0;
+			}
+			else
+			{
+				int lDepth = getHeight(root.left);
+				int rDepth = getHeight(root.right);
+
+				if (lDepth > rDepth)
+					return (lDepth + 1);
+				else
+					return (rDepth + 1);
+			}
+		}
+
+		public BinaryTreeNode SortedArrayToBST(int[] nums)
+		{
+
+			if (nums.Length == 0)
+			{
+				return null;
+			}
+
+			BinaryTreeNode output = SortedArrayToBSTRec(nums, 0, nums.Length - 1);
+
+			return output;
+		}
+
+		public BinaryTreeNode SortedArrayToBSTRec(int[] array, int start, int end)
+		{
+			if (start > end)
+			{
+				return null;
+			}
+
+			var mid = (start + end) / 2;
+			var newNode = new BinaryTreeNode(array[mid])
+			{
+				left = SortedArrayToBSTRec(array, start, mid - 1),
+			    right = SortedArrayToBSTRec(array, mid + 1, end)
+			};
+			return newNode;
+		}
+
+		public static  BinaryTreeNode UpsideDownBinaryTree(BinaryTreeNode root)
+		{
+			if (root == null)
+			{
+				return null;
+			}
+
+			BinaryTreeNode parent = root, left = root.left, right = root.right;
+
+			if (left != null)
+			{
+				BinaryTreeNode ret = UpsideDownBinaryTree(left);
+				left.left = right;
+				left.right = parent;
+				return ret;
+			}
+
+			return root;
+		}
+
+		//For binary tree
+		public static BinaryTreeNode LowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q)
+		{
+			if (root == null || root == p || root == q)
+			{
+				return root;
+			}
+
+			BinaryTreeNode left = LowestCommonAncestor(root.left, p, q);
+			BinaryTreeNode right = LowestCommonAncestor(root.right, p, q);
+
+			return left == null ? right : right == null ? left : root;
+		}
+
+		//For binary search tree
+		public static BinaryTreeNode lowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q)
+		{
+			while ((root.val - p.val) * (root.val - q.val) > 0)
+				root = p.val < root.val ? root.left : root.right;
+			return root;
+		}
+
 	}
 }

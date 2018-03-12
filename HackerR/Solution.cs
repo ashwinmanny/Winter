@@ -143,7 +143,7 @@ namespace HackerR
 			Console.ReadKey();
 
 		}
-
+		
           * */
 		/* static void Main(String[] args) {
 			int n = Convert.ToInt32(Console.ReadLine());

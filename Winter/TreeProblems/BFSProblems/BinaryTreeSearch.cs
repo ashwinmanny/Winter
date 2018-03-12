@@ -29,6 +29,19 @@ namespace Winter.Searching
 			KthSmallestHelper(root.right, ref k);
 		}
 
+		public List<BinaryTreeNode> lisOfTreeNodeInorder = new List<BinaryTreeNode>();
+		public List<BinaryTreeNode> InorderTraversalRecursion(BinaryTreeNode root)
+		{
+			if (root != null)
+			{
+				InorderTraversalRecursion(root.left);
+				lisOfTreeNodeInorder.Add(root);
+				InorderTraversalRecursion(root.right);
+			}
+
+			return lisOfTreeNodeInorder;
+		}
+
 		public IList InorderTraversal(BinaryTreeNode root)
 		{
 			var res = new List<int>();
@@ -125,6 +138,69 @@ namespace Winter.Searching
 
 			values.Reverse();
 			return values;
+		}
+
+		public static List<int> output = new List<int>();
+
+		public static IList<int> LargestValues(BinaryTreeNode root)
+		{
+
+			if (root == null)
+			{
+				return output;
+			}
+
+			Queue<BinaryTreeNode> q = new Queue<BinaryTreeNode>();
+			HashSet<BinaryTreeNode> h = new HashSet<BinaryTreeNode>();
+
+			q.Enqueue(root);
+			h.Add(root);
+
+
+			while (q.Count != 0)
+			{
+				int max = int.MinValue;
+
+				int size = q.Count;
+
+				while (size > 0)
+				{
+					BinaryTreeNode node = q.Dequeue();
+
+					if (max < node.val)
+					{
+						max = node.val;
+					}
+
+					if (node.left != null)
+					{
+						if (!(h.Contains(node.left)))
+						{
+							q.Enqueue(node.left);
+							h.Add(node.left);
+						}
+
+					}
+
+					if (node.right != null)
+					{
+						if (!(h.Contains(node.right)))
+						{
+							q.Enqueue(node.right);
+							h.Add(node.right);
+						}
+
+					}
+
+					size--;
+
+				}
+
+				output.Add(max);
+
+			}
+
+			return output;
 		}
 	}
 }

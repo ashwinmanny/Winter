@@ -193,5 +193,134 @@ namespace Winter.DFSProblems
 			}
 		}
 
+		public void Marking(char[,] grid, int i, int j)
+		{
+			if (i < 0 || j < 0 || i >= grid.GetLength(0) || j >= grid.GetLength(1) || grid[i, j] == '0')
+			{
+				return;
+			}
+
+			grid[i, j] = '0';
+			Marking(grid, i + 1, j);
+			Marking(grid, i - 1, j);
+			Marking(grid, i, j + 1);
+			Marking(grid, i, j - 1);
+		}
+
+		public int NumIslands(char[,] grid)
+		{
+			int cnt = 0;
+
+			for (int i = 0; i < grid.GetLength(0); i++)
+			{
+				for (int j = 0; j < grid.GetLength(1); j++)
+				{
+					if (grid[i, j] == '1')
+					{
+						Marking(grid, i, j);
+						cnt++;
+					}
+				}
+			}
+
+			return cnt;
+		}
+
+		private static List<IList<int>> resint = new List<IList<int>>();
+
+		public static IList<IList<int>> LevelOrder(BinaryTreeNode root)
+		{
+			LevelOrderHelper(root, 0);
+			return resint;
+		}
+
+		private static void LevelOrderHelper(BinaryTreeNode root, int height)
+		{
+			if (root == null) return;
+			if (height == resint.Count)
+			{
+				resint.Add(new List<int>());
+			}
+
+			resint[height].Add(root.val);
+			LevelOrderHelper(root.left, height + 1);
+			LevelOrderHelper(root.right, height + 1);
+		}
+
+
+		public bool AreSentencesSimilarTwo(string[] words1, string[] words2, string[,] pairs)
+		{
+			if (words1.Length != words2.Length)
+			{
+				return false;
+			}
+
+			Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+			for (int i = 0; i < pairs.GetLength(0); i++)
+			{
+				foreach (string pair in pairs)
+				{
+					if (!(dict.ContainsKey(pair)))
+					{
+						dict.Add(pair, new List<string>());
+					}
+				}
+
+				dict[pairs[i, 0]].Add(pairs[i, 1]);
+				dict[pairs[i, 1]].Add(pairs[i, 0]);
+
+			}
+
+			for (int i = 0; i < words1.Length; i++)
+			{
+				Console.WriteLine("word : {0}", i);
+				if (words1[i] == words2[i])
+				{
+					continue;
+
+				}
+				else
+				{
+					if (dict.ContainsKey(words1[i]))
+					{
+						if (!(AreSimilarWordsDFS(words1[i], words2[i], dict, new HashSet<string>())))
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		private static bool AreSimilarWordsDFS(string source, string target, Dictionary<string, List<string>> dict, HashSet<string> visited)
+		{
+			if (dict[source].Contains(target))
+			{
+				return true;
+			}
+			else
+			{
+				visited.Add(source);
+				foreach (string next in dict[source])
+				{
+					if (!(visited.Contains(next)))
+					{
+						if (AreSimilarWordsDFS(next, target, dict, visited))
+						{
+							return true;
+						}
+					}
+
+				}
+			}
+
+			return false;
+		}
 	}
 }

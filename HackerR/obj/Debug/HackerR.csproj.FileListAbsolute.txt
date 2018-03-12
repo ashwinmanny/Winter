@@ -3,3 +3,4 @@ C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerR\bin\Debug\H
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerR\bin\Debug\HackerR.pdb
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerR\obj\Debug\HackerR.exe
 C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerR\obj\Debug\HackerR.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\HackerR\obj\Debug\HackerR.csprojResolveAssemblyReference.cache

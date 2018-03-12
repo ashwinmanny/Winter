@@ -8,6 +8,52 @@ namespace Winter.ArrayProblems
 {
 	class ArraySolution
 	{
+		public static IList<string> RemoveInvalidParentheses(string s)
+		{
+			List<String> ans = new List<String>();
+			remove(s, ans, 0, 0, new char[]{'(', ')'});
+			return ans;
+		}
+
+		public static void remove(String s, List<String> ans, int last_i, int last_j, char[] par)
+		{
+			for (int stack = 0, i = last_i; i < s.Length; ++i)
+			{
+				if (s[i] == par[0])
+				{ 
+					stack++; 
+				}
+				if (s[i] == par[1])
+				{ 
+					stack--; 
+				}
+				if (stack >= 0)
+				{
+					continue;
+				}
+				else
+				{
+					for (int j = last_j; j <= i; ++j)
+					{
+						if (s[j] == par[1] && (j == last_j || s[j - 1] != par[1]))
+						{
+							remove(s.Substring(0, j) + s.Substring(j + 1), ans, i, j, par);
+						}
+					}
+					return;
+				}
+			}
+
+			char[] rev = s.ToCharArray();
+			Array.Reverse(rev);
+
+			String reversed = new String(rev);
+			if (par[0] == '(') // finished left to right
+				remove(reversed, ans, 0, 0, new char[] { ')', '(' });
+			else // finished right to left
+				ans.Add(reversed);
+		}
+
 		public int[] TwoSum(int[] numbers, int target)
 		{
 			int[] output = new int[2];
@@ -1234,6 +1280,421 @@ namespace Winter.ArrayProblems
 			return outputList.ToArray<int>();
 		}
 
+		public bool AreSentencesSimilar(string[] words1, string[] words2, string[,] pairs)
+		{
+			if (words1.Length != words2.Length)
+			{
+				return false;
+			}
+
+			Dictionary<string, HashSet<string>> dict = new Dictionary<string, HashSet<string>>();
+			for (int i = 0; i < pairs.Length; i++)
+			{
+				foreach (string pair in pairs)
+				{
+					if (!(dict.ContainsKey(pair)))
+					{
+						dict.Add(pair, new HashSet<string>());
+					}
+				}
+
+				dict[pairs[i, 0]].Add(pairs[i, 1]);
+				dict[pairs[i, 1]].Add(pairs[i, 0]);
+			}
+
+			for (int i = 0; i < words1.Length; i++)
+			{
+				if (words1[i] == words2[i])
+				{
+					continue;
+				}
+				else
+				{
+					if (dict.ContainsKey(words1[i]))
+					{
+						if (dict[words1[i]].Contains(words2[i]))
+						{
+							continue;
+						}
+						else
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+
+			return true;
+
+		}
+
+		public IList<int> FindAnagrams(string s, string p)
+		{
+			Dictionary<string, int> output = new Dictionary<string, int>();
+			int k = p.Length;
+
+			for (int i = 0; i < s.Length; i++)
+			{
+
+			}
+
+			return null;
+		}
+
+		public static List<String> findKMinusOneDistinctSubstring(String inputString, int num) {
+
+				Dictionary<char, int> occurrenceMap = new Dictionary<char, int>();
+				List<String> resultList = new List<String>();
+
+				for (int i = 0; i + num <= inputString.Length; i++) {
+
+					String str = inputString.Substring(i, num);
+
+					bool isRepeat = false;
+
+					foreach (char c in str.ToCharArray()) {
+						if (occurrenceMap.ContainsKey(c))
+						{
+							occurrenceMap[c] = occurrenceMap[c] + 1;
+						}
+						else
+						{
+							occurrenceMap.Add(c, 1);
+						}
+
+						if ((occurrenceMap.Values.Count == num - 1) && occurrenceMap.Values.Sum() == num)
+						{
+							isRepeat = true;
+						}
+					}
+					//if it makes it through and has precisely 1 repeat character
+					if (isRepeat)
+						resultList.Add(str);
+					//empty the map
+					occurrenceMap.Clear();
+				}
+
+				return resultList;
+        }
+
+		public static List<int> lengthEachScene(List<char> inputList)
+		{
+
+				List<int> result = new List<int>();
+				Dictionary<char, Interval2> occuranceMap = new Dictionary<char, Interval2>();
+
+				List<Interval2> l = new List<Interval2>();
+				for(int i = 0; i < inputList.Count; i++){
+					char cur = inputList[i];
+					if(occuranceMap.ContainsKey(cur)){
+						occuranceMap[cur].end = i;
+					}
+					else{
+						occuranceMap.Add(cur, new Interval2(cur, i));
+					}
+				}
+
+				List<Interval2> listP = new List<Interval2>(occuranceMap.Values);
+
+				Console.WriteLine(listP);
+				Interval2 prev = listP[0];
+
+				for(int i = 1; i < listP.Count; i++){
+
+					Interval2 cur = listP[i];
+					if( prev.end < cur.start ){
+
+						result.Add(prev.end - prev.start +1);
+						prev.start = cur.start;
+						prev.end = cur.end;
+					}
+					else{
+						if(prev.end > cur.end){
+							continue;
+						}
+						else{
+							prev.end = cur.end;
+
+						}
+
+
+					}
+					//result.add(prev.end - prev.start +1);
+
+				}
+
+				result.Add(prev.end - prev.start + 1);
+
+				return result;
+              }
+
+		public int CutOffTree(IList<IList<int>> forest)
+		{
+			List<int[]> trees = new List<int[]>();
+			for (int r = 0; r < forest.Count; ++r) {
+				for (int c = 0; c < forest[0].Count; c++) {
+					int v = forest[r][c];
+					if (v > 1) trees.Add(new int[]{v, r, c});
+				}
+			}
+
+			trees.Sort((a,b) => a[0].CompareTo(b[0]));
+
+			int ans = 0, sr = 0, sc = 0;
+			foreach (int[] tree in trees) {
+				int d = bfs(forest, sr, sc, tree[1], tree[2]);
+				if (d < 0) return -1;
+				ans += d;
+				sr = tree[1]; sc = tree[2];
+			}
+			return ans;
+		}
+
+		static int[] dr = new int[] { -1, 1, 0, 0 };
+		static int[] dc = new int[] { 0, 0, -1, 1 };
+
+		public static int bfs(IList<IList<int>> forest, int sr, int sc, int tr, int tc) 
+		{
+	        int R = forest.Count;
+		    int C = forest[0].Count;
+			Queue<int[]> queue = new Queue<int[]>();
+			queue.Enqueue(new int[]{sr, sc, 0});
+			bool[,] seen = new bool[R,C];
+			seen[sr,sc] = true;
+			while (!(queue.Count == 0)) 
+			{
+				int[] cur = queue.Dequeue();
+				if (cur[0] == tr && cur[1] == tc)
+				{
+					return cur[2];
+				}
+
+				for (int di = 0; di < 4; di++) 
+				{
+					int r = cur[0] + dr[di];
+					int c = cur[1] + dc[di];
+					if (0 <= r && r < R && 0 <= c && c < C && !(seen[r,c]) && forest[r][c] > 0) 
+					{
+						seen[r,c] = true;
+						queue.Enqueue(new int[]{r, c, cur[2]+1});
+					}
+				}
+			}
+			return -1;
+		}
+
+
+		public static bool IsIsomorphic(string s, string t)
+		{
+			bool output = true;
+
+			Dictionary<char, char> dict = new Dictionary<char, char>();
+
+			if (s.Length != t.Length)
+			{
+				return false;
+			}
+
+			for (int i = 0; i < s.Length; i++)
+			{
+				if(!(dict.ContainsKey(s[i])))
+				{
+					dict.Add(s[i], t[i]);
+				}
+				else{
+
+					if (dict[s[i]] != t[i])
+					{
+						return false;
+					}
+				}
+			}
+			return output;
+		}
+
+		public static int shortestDistance(string[] words, string word1, string word2)
+		{
+			int m = -1, n = -1;
+			int min = int.MaxValue;
+
+			for(int i = 0; i <words.Length ; i++)
+			{
+				string s = words[i];
+
+				if (word1.Equals(s))
+				{
+					m = i;
+					if (n != -1)
+					{
+						min = Math.Min(min, m - n);
+					}
+				}
+				else if (word2.Equals(s))
+				{
+					n = i;
+					if (m != -1)
+					{
+						min = Math.Min(min, n - m);
+					}
+				}
+			}
+
+			return min;
+		}
+
+		//same words
+		public static int shortestDistanceIII(string[] words, string word1, string word2)
+		{
+			if (words == null || words.Length < 1 || word1 == null || word2 == null)
+			{
+				return 0;
+			}
+
+			int m = -1, n = -1;
+			int min = int.MaxValue;
+
+			int turn = 0;
+
+			if (word1.Equals(word2))
+			{
+				turn = 1;
+			}
+
+			for (int i = 0; i < words.Length; i++)
+			{
+				string s = words[i];
+
+				if (word1.Equals(s) && (turn ==1 || turn == 0))
+				{
+					m = i;
+
+					if (turn == 1)
+					{
+						turn = 2;
+					}
+
+					if (n != -1)
+					{
+						min = Math.Min(min, m - n);
+					}
+				}
+				else if (word2.Equals(s) && (turn == 2 || turn == 0))
+				{
+					n = i;
+
+					if (turn == 2)
+					{
+						turn = 1;
+					}
+
+					if (m != -1)
+					{
+						min = Math.Min(min, n - m);
+					}
+				}
+			}
+
+			return min;
+		}
+
+		public static int depthSum(List<NestedInteger> nestedList)
+		{
+			return helper(nestedList, 1);
+		}
+
+		public static int helper(List<NestedInteger> nestedList, int depth)
+		{
+			if (nestedList == null || nestedList.Count == 0)
+			{
+				return 0;
+			}
+
+			int sum = 0;
+
+			foreach (NestedInteger ni in nestedList)
+			{
+				if (ni.isInteger())
+				{
+					sum = sum + ni.getInteger() * depth;
+				}
+				else
+				{
+					sum = sum + helper(ni.getList(), depth + 1);
+				}
+			}
+
+			return sum;
+		}
+
+		public static int[] SearchRange(int[] nums, int target)
+		{
+
+			int[] targetRange = { -1, -1 };
+
+			// find the index of the leftmost appearance of `target`.
+			for (int i = 0; i < nums.Length; i++)
+			{
+				if (nums[i] == target)
+				{
+					targetRange[0] = i;
+					break;
+				}
+			}
+
+			// if the last loop did not find any index, then there is no valid range
+			// and we return [-1, -1].
+			if (targetRange[0] == -1)
+			{
+				return targetRange;
+			}
+
+			// find the index of the rightmost appearance of `target` (by reverse
+			// iteration). it is guaranteed to appear.
+			for (int j = nums.Length - 1; j >= 0; j--)
+			{
+				if (nums[j] == target)
+				{
+					targetRange[1] = j;
+					break;
+				}
+			}
+
+			return targetRange;
+		}
+
+		public static IList<string> FindRepeatedDnaSequences(string s)
+		{
+			var res = new HashSet<string>();
+			const int Length = 10;
+			var hashtable = new Dictionary<char, int> { { 'A', 1 }, { 'C', 2 }, { 'G', 3 }, { 'T', 4 } };
+			var hashtableFor10LengthString = new Dictionary<long, int>();
+
+			for (var i = 0; i < s.Length - 9; i++)
+			{
+				long rollinghash = 0;
+				for (var j = 0; j < Length; j++)
+				{
+					// get rolling hash, base 10
+					rollinghash = hashtable[s[i + j]] + rollinghash * 10;
+				}
+
+				if (hashtableFor10LengthString.ContainsKey(rollinghash))
+				{
+					res.Add(s.Substring(i, 10));
+				}
+				else
+				{
+					hashtableFor10LengthString.Add(rollinghash, i);
+				}
+			}
+
+			return res.ToList();
+		}
+
     }
 
     public class Interval
@@ -1243,4 +1704,25 @@ namespace Winter.ArrayProblems
        public Interval() { start = 0; end = 0; }
        public Interval(int s, int e) { start = s; end = e; }
     }
+
+
+	class Interval2
+	{
+		public int start {get; set;}
+		public int end  {get; set;}
+		public char value  {get; set;}
+
+		public Interval2(char value, int start)
+		{
+			this.value = value;
+			this.start = start;
+			this.end = start;
+		}
+
+		public String toString()
+		{
+
+			return value + "[" + start + ":" + end + "]";
+		}
+	}
 }

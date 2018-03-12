@@ -59,5 +59,39 @@ namespace Winter.StackProblems
 
 			return max_area;
 		}
+
+		public static int EvalRPN(string[] tokens)
+		{
+			Stack<int> stack = new Stack<int>();
+
+			for (int i = 0; i < tokens.Length; i++)
+			{
+				switch (tokens[i])
+				{
+					case "+":
+						stack.Push(stack.Pop() + stack.Pop());
+						break;
+
+					case "-":
+						stack.Push(-stack.Pop() + stack.Pop());
+						break;
+
+					case "*":
+						stack.Push(stack.Pop() * stack.Pop());
+						break;
+
+					case "/":
+						int n1 = stack.Pop(), n2 = stack.Pop();
+						stack.Push(n2 / n1);
+						break;
+
+					default:
+						stack.Push(Convert.ToInt32(tokens[i]));
+						break;
+				}
+			}
+
+			return stack.Pop();
+		}
 	}
 }

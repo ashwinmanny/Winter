@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -66,17 +67,28 @@ namespace Winter
 			
 			 */
 
-			/********************************************************** Word Ladder **
+			/********************************************************** Word Ladder ******not efficient**************
 
 			WordLadder w = new WordLadder();
 
-			ISet<string> dict = new HashSet<string> {"hot","dot","dog","lot","log"};
+			IList<string> dict = new List<string> {"hot","dot","dog","lot","log"};
 
 			int len = w.ladderLength("hit", "cog", dict);
 
 			Console.WriteLine(len.ToString());
-			 *
-			 * * */
+			 
+			 **********/
+
+			/********************************************************** Word Ladder II ********************
+
+			WordLadder w = new WordLadder();
+
+			IList<string> dict = new List<string> { "hot", "dot", "dog", "lot", "log", "cog" };
+
+			IList<IList<string>> len = w.FindLadders("hit", "cog", dict);
+
+			Console.WriteLine(len.ToString());
+			**/
 			
 			/********************Reverse string****************
 
@@ -501,18 +513,21 @@ namespace Winter
 			 
 			*/
 
-			/*
-			Node1 root = null;
+			/****************************************************Create a binary tree and get height *******************
+
+			BinaryTreeSolution b = new BinaryTreeSolution();
+			BinaryTreeNode root = null;
 			int T = Int32.Parse(Console.ReadLine());
 			while (T-- > 0)
 			{
 				int data = Int32.Parse(Console.ReadLine());
-				root = insert(root, data);
+				root = b.insert(root, data);
 			}
-			int height = getHeight(root);
+			int height = b.getHeight(root);
 			Console.WriteLine(height-1);
 
 			Console.ReadLine();
+			
 			*/
 
 			/****************************************************Coin change problem*****
@@ -663,6 +678,34 @@ namespace Winter
 			Console.WriteLine("Merge k sorted problem ", outputList);
 			Console.ReadLine();
 			 
+			*/
+
+			/*******Merge K sorted list problem *********
+
+			LinkedListNode node1 = new LinkedListNode(4);
+			LinkedListNode node2 = new LinkedListNode(7);
+			LinkedListNode node3 = new LinkedListNode(8);
+			LinkedListNode node4 = new LinkedListNode(2);
+			LinkedListNode node5 = new LinkedListNode(1);
+
+			node1.next = node2;
+			node2.next = node3;
+			node3.next = node4;
+			node4.next = node5;
+
+			LinkedListNode node6 = new LinkedListNode(5);
+			LinkedListNode node7 = new LinkedListNode(6);
+			LinkedListNode node8 = new LinkedListNode(8);
+			LinkedListNode node9 = new LinkedListNode(2);
+			LinkedListNode node10 = new LinkedListNode(1);
+
+			node6.next = node7;
+			node7.next = node3;
+
+			LinkedListNode output = LinkedListSolution.GetIntersectionNode(node1, node6);
+
+			Console.WriteLine("Intersection of linked list: {0}", output.data);
+
 			*/
 
 			/*********************Change Directory 'cd' ****************
@@ -888,13 +931,21 @@ namespace Winter
 			BinaryTreeSearch preOrderTraversal = new BinaryTreeSearch();
 			BinaryTreeSearch postOrderTraversal = new BinaryTreeSearch();
 
-			Console.WriteLine("Inorder traveral of a BT {0} ", inOrderTraversal.InorderTraversal(n));
-			Console.WriteLine("Preorder traveral of a BT {0} ", preOrderTraversal.PreorderTraversal(n));
-		    // List<BinaryTreeNode> list2 = preOrderTraversal.PreorderTraversalRecursion(n);
-			Console.WriteLine("Postorder traveral of a BT {0} ", postOrderTraversal.PostorderTraversal(n));
+			int[] a = new int[inOrderTraversal.InorderTraversal(n).Count];
+			inOrderTraversal.InorderTraversal(n).CopyTo(a,0);
+			Console.WriteLine("Inorder traveral of a BT {0} ", a);
+
+			List<BinaryTreeNode> inOrder = inOrderTraversal.InorderTraversalRecursion(n);
+
+			Console.WriteLine("Inorder traveral of a BT {0} ", inOrder);
+
+			////Console.WriteLine("Preorder traveral of a BT {0} ", preOrderTraversal.PreorderTraversal(n));
+		    //List<BinaryTreeNode> list2 = preOrderTraversal.PreorderTraversalRecursion(n);
+			//Console.WriteLine("Postorder traveral of a BT {0} ", postOrderTraversal.PostorderTraversal(n));
 			Console.ReadLine();
 						 
 			*/
+			
 			/*******Engagio**********
 			StringSolution d = new StringSolution();
 
@@ -935,7 +986,9 @@ namespace Winter
 			Console.WriteLine(" Value for input key is  " + param_4);
 
 			Console.ReadLine();
+
 			*/
+			
 
 			/*********************Longest Consecutive Sequence**************************************
 
@@ -1089,8 +1142,9 @@ namespace Winter
 			string input = "the cattle was rattled by the battery";
 
 			Console.WriteLine(a.replaceWords(l, input));
-			 * 
-			 * */
+
+			*/
+			 
 
 			/*****************************Spiral Matrix**********************************************
 
@@ -1270,49 +1324,230 @@ namespace Winter
 			Console.WriteLine("Answer " + output.First().Key + "Value " + output.First().Value);
 			*/
 
+			/***************************Number of Islands************************************
+
+			char[,] islandMatrix = new char[4, 5] { { '1', '1', '0', '0', '0' }, 
+													{ '1', '1', '0', '0', '0' }, 
+													{ '0', '0', '1', '0', '0'}, 
+													{ '0', '0', '0', '1', '1' } };
+			Solution s = new Solution();
+			Console.WriteLine(s.NumIslands(islandMatrix)); // DFS
 			Console.ReadKey();
-			  
-		}
 
-		static Node1 insert(Node1 root, int data)
-		{
-			if (root == null)
-			{
-				return new Node1(data);
-			}
-			else
-			{
-				Node1 cur;
-				if (data <= root.data)
-				{
-					cur = insert(root.left, data);
-					root.left = cur;
-				}
-				else
-				{
-					cur = insert(root.right, data);
-					root.right = cur;
-				}
-				return root;
-			}
-		}
+			*/
 
-		static int getHeight(Node1 root)
-		{
-			if (root == null)
-			{
-				return 0;
-			}
-			else
-			{
-				int lDepth = getHeight(root.left);
-				int rDepth = getHeight(root.right);
+			/***************************Sentence Similarity I ************************************
 
-				if (lDepth > rDepth)
-					return (lDepth + 1);
-				else
-					return (rDepth + 1);
-			}
+			string[] words1 = new string[3] { "great", "acting", "skills" };
+			string[] words2 = new string[3] { "fine", "painting", "talent" };
+
+			string[,] pairs = new string[3, 2] { { "great", "fine" }, { "drama", "acting" }, { "skills", "talent" } };
+
+			ArraySolution arr = new ArraySolution();
+			bool output = arr.AreSentencesSimilar(words1, words2, pairs);
+			Console.WriteLine(output);
+			*/
+
+			/***************************Sentence Similarity II (transitive) (not efficient)************************************
+
+			string[] words1 = new string[3] { "great", "acting", "skills" };
+			string[] words2 = new string[3] { "fine", "painting", "talent" };
+
+			string[,] pairs = new string[3, 2] { { "great", "fine" }, { "drama", "acting" }, { "skills", "talent" } };
+
+			Solution dfs = new Solution();
+			bool output = dfs.AreSentencesSimilarTwo(words1, words2, pairs);
+			Console.WriteLine(output);
+			*/
+
+			/**********************Valid Palindrome II****not efficient***********
+			string k = "abca";
+			Console.WriteLine(new StringSolution().ValidPalindrome(k));
+
+			***********/
+
+			/*************alphanumeric palindrome*********
+			int x = 100;
+
+			string s = "A man, a plan, a canal: Panama";
+
+			string pattern = "[^A-Za-z0-9]";
+
+			Regex reg = new Regex(pattern);
+
+		    string result = reg.Replace(s, "").ToLower();
+
+			char[] arr = result.ToCharArray();
+            Array.Reverse(arr);
+
+			string reverse = new string(arr);
+
+			StringBuilder j = new StringBuilder();
+
+			*/
+
+			/****************Convert Sorted Array to Binary Search Tree**************
+			//int[] input = new int[] { 7, 3, 9, 2, 4, 8, 10 };
+
+			//int[] input = new int[] { 10, 7, 14, 20, 1, 5, 8 };
+
+			int[] input = new int[] {-10,-3,0,5,9};
+
+			BinaryTreeSolution b = new BinaryTreeSolution();
+
+		    BinaryTreeNode output = b.SortedArrayToBST(input);
+
+			**************/
+
+
+			/*****************String Compression ********************
+
+			StringSolution s = new StringSolution();
+
+			char[] input1 = new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'};
+
+			//char[] input2 = new char[]{ 'a', 'a', 'b', 'b', 'c', 'c', 'c' };
+
+			int output = s.Compress(input1);
+
+			Console.WriteLine("{0}", output);
+
+			*/
+
+			/*****************Cut Off Trees for Golf Event ********************
+
+			IList<IList<int>> input = new List<IList<int>>();
+
+			IList<int> list1 = new List<int>() {1,2,3};
+
+			IList<int> list2 = new List<int>() {0,0,4} ;
+
+			IList<int> list3 = new List<int>() {7,6,5};
+
+			input.Add(list1);
+			input.Add(list1);
+			input.Add(list1);
+
+
+			ArraySolution a = new ArraySolution();
+			Console.WriteLine(a.CutOffTree(input));
+			
+			 */
+
+			/**********************************Amazon 1**********************************
+			List<string> output = ArraySolution.findKMinusOneDistinctSubstring("wawaglknagagwunagkwkwagl", 4);
+			  ***************************/
+
+			/************************ Amazon 2 ******************************************************
+			List<char> l = new List<char>();
+			l.Add('a');
+			l.Add('b');
+			l.Add('c');
+			l.Add('d');
+			l.Add('a');
+			l.Add('e');
+			l.Add('f');
+			l.Add('g');
+			l.Add('h');
+			l.Add('i');
+			l.Add('j');
+			l.Add('e');
+			List<int> output = ArraySolution.lengthEachScene(l);
+			***************************/
+
+			/************************************Remove Invalid Parentheses***********************
+
+			IList<string> output = ArraySolution.RemoveInvalidParentheses("()())()");
+
+			List<string> outputArray = output.ToList();
+
+			*/
+
+			/***********************************Find Largest Value in Each Tree Row************************
+
+			BinaryTreeNode root = new BinaryTreeNode(1);
+
+			IList<int> output = BinaryTreeSearch.LargestValues(root);
+			 * 
+			 */
+			
+ 			/***********************************Palindromic Substrings***********************************
+
+			int output = StringSolution.CountSubstrings("aaa");
+
+			***/
+
+			/************************************Isomorphic Strings ******incomplete***********************
+
+			//bool output = ArraySolution.IsIsomorphic("ab", "ca");
+
+			bool output = ArraySolution.IsIsomorphic("ab", "aa");
+			*/
+
+			/************************************Shortest Word Distance*************************************
+
+			int output = ArraySolution.shortestDistance(new string[5] {"practice", "makes", "perfect", "coding", "makes"}, "coding", "practice");
+
+			*/
+
+			/************************************Shortest Word Distance III (same words)************************************
+
+			int outputIII = ArraySolution.shortestDistanceIII(new string[5] { "practice", "makes", "perfect", "coding", "makes" }, "makes", "makes");
+
+			*/
+
+			/************************************Nested List Weight Sum***************************************************
+
+			//int output = ArraySolution.depthSum(new NestedInteger() { {1,1} 2, {1,1}});
+			
+			 **/
+
+			/************************************Binary Tree Upside Down***************************************************
+
+			BinaryTreeNode a = new BinaryTreeNode(1);
+			BinaryTreeNode b = new BinaryTreeNode(2);
+			BinaryTreeNode c = new BinaryTreeNode(3);
+			BinaryTreeNode d = new BinaryTreeNode(4);
+			BinaryTreeNode e = new BinaryTreeNode(5);
+
+			a.left = b;
+			b.right = c;
+
+			b.left = d;
+			b.right = e;
+
+			BinaryTreeNode outputNode = BinaryTreeSolution.UpsideDownBinaryTree(a);
+			**********/
+
+			/****************************Evaluate Reverse Polish Notation****************************************
+
+			//["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
+			//["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
+			int output = StackSolution.EvalRPN(new string[5]{"2", "1", "+", "3", "*"});
+
+			*/
+
+			/****************************Lowest Common Ancestor of a Binary Tree****************************************/
+
+			//BinaryTreeSolution.LowestCommonAncestor
+
+			/****************************Lowest Common Ancestor of a Binary Search Tree****************************************/
+
+			//BinaryTreeSolution.lowestCommonAncestor
+
+			/****************************Binary Tree Level Order Traversal*********************************************/
+
+			//Solution.LevelOrder
+
+			/****************************Search a range****************************************************************/
+
+			//ArraySolution.SearchRange
+
+			/****************************Repeated DNA Sequences****************************************************************/
+
+			//ArraySolution.FindRepeatedDnaSequences
+
+			Console.ReadKey();
 		}
 	}
 }

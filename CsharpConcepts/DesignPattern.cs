@@ -11,6 +11,22 @@ namespace CsharpConcepts
 	}
 
 	/// <summary>
+	/// Singleton Example
+	/// </summary>
+
+	public class Singleton
+	{
+		private static readonly Singleton instance = new Singleton();
+
+		private Singleton() { }
+
+		public static Singleton GetInstance()
+		{
+			return instance;
+		}
+
+	}
+	/// <summary>
 	/// Factory Method Example
 	/// </summary>
 	

@@ -1,0 +1,9 @@
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\bin\Debug\WinterUnitTests.dll
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\bin\Debug\WinterUnitTests.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\obj\Debug\WinterUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\obj\Debug\WinterUnitTests.dll
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\obj\Debug\WinterUnitTests.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\bin\Debug\Winter.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\bin\Debug\Winter.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\bin\Debug\CsharpConcepts.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\WinterUnitTests\bin\Debug\CsharpConcepts.pdb

@@ -40,9 +40,12 @@
     <Compile Include="DirectoryNode.cs" />
     <Compile Include="LinkedListsProblems\LinkedListSolution.cs" />
     <Compile Include="MathProblems\MathSolution.cs" />
-    <Compile Include="Node1.cs" />
+    <Compile Include="NestedInteger.cs" />
     <Compile Include="Rater.cs" />
     <Compile Include="Recursion\RecursiveSolution.cs" />
+    <Compile Include="SpecialDataStructureProblems\GraphNode.cs" />
+    <Compile Include="SpecialDataStructureProblems\LFUCache.cs" />
+    <Compile Include="SpecialDataStructureProblems\UnionFind.cs" />
     <Compile Include="TreeProblems\BFSProblems\BFS.cs" />
     <Compile Include="TreeProblems\BinaryTreeSolution.cs" />
     <Compile Include="TreeProblems\DFSProblems\DFS.cs" />

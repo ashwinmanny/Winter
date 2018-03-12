@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Winter
@@ -148,6 +149,28 @@ namespace Winter
 			return output;
 		}
 
+		public bool IsPalindromeUsingRegex(string s) {
+        
+			   string Pattern = "[^A-Za-z0-9]";
+			   Regex reg = new Regex(Pattern);
+        
+			   string actual = reg.Replace(s, "").ToLower();
+       
+				char[] c = actual.ToCharArray();
+			   Array.Reverse(c);
+			   string reverse = new string(c);
+        
+			   if(actual == reverse)
+			   {
+				   return true;
+			   }
+			   else
+			   {
+				   return false;
+			   }
+       
+		}
+
 		public bool IsPalindrome(string s)
 		{
 			for (int i = 0, j = s.Length-1; i < j; i++, j--)
@@ -159,6 +182,52 @@ namespace Winter
 
 			}
 			return true;
+		}
+
+		public bool IsPalindromeNumber(int x)
+		{
+
+			string s = Convert.ToString(x);
+
+			if (IsPalindrome(s))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public bool ValidPalindrome(string s)
+		{
+
+			bool output = true;
+
+			if (IsPalindrome(s))
+			{
+				return output;
+			}
+
+			for (int i = 0; i < s.Length; i++)
+			{
+				StringBuilder input = new StringBuilder();
+				input.Append(s);
+
+				input.Remove(i, 1);
+
+				if (IsPalindrome(input.ToString()))
+				{
+					output = true;
+					break;
+				}
+				else
+				{
+					output = false;
+				}
+			}
+
+			return output;
 		}
 
 		public int LongestPalindrome(string s)
@@ -237,6 +306,24 @@ namespace Winter
 			}
 
 			return revString.Substring(0, s.Length - p[proString.Length - 1]) + s;
+		}
+
+		public static int CountSubstrings(string s)
+		{
+			int N = s.Length;
+			int ans = 0;
+			for (int center = 0; center <= 2 * N - 1; center++)
+			{
+				int left = center / 2;
+				int right = left + center % 2;
+				while (left >= 0 && right < N && s[left] == s[right])
+				{
+					ans++;
+					left--;
+					right++;
+				}
+			}
+			return ans;
 		}
 
 		public int StrStrBruteForce(string haystack, string needle)
@@ -672,6 +759,41 @@ namespace Winter
 			//Array.Equals(sArray, tArray);
 
 			return sArray.SequenceEqual(tArray);
+		}
+
+		public int Compress(char[] chars)
+		{
+			int indexAns = 0, index = 0;
+
+			while (index < chars.Length)
+			{
+				char currentChar = chars[index];
+				int count = 0;
+				while (index < chars.Length && chars[index] == currentChar)
+				{
+					index++;
+					count++;
+				}
+
+				chars[indexAns++] = currentChar;
+
+				if (count != 1)
+				{
+					// Copy over the character count to the array
+					char[] arr = count.ToString().ToCharArray();
+
+					foreach (char c in arr)
+					{
+						chars[indexAns++] = c;
+					}
+				}
+			}
+
+			char[] compressedOutput = new char[indexAns];
+
+			Array.Copy(chars, compressedOutput, indexAns);
+
+			return indexAns;
 		}
 
 	}

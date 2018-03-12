@@ -1,0 +1,6 @@
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpTDD\bin\Debug\CsharpTDD.exe.config
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpTDD\bin\Debug\CsharpTDD.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpTDD\bin\Debug\CsharpTDD.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpTDD\obj\Debug\CsharpTDD.csprojResolveAssemblyReference.cache
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpTDD\obj\Debug\CsharpTDD.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\CsharpTDD\obj\Debug\CsharpTDD.pdb

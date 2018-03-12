@@ -32,7 +32,7 @@ namespace CsharpDataStructures
 
 			multiArray = new int[2,3] { { 0, 3, 5 }, { 0, 8, 5 } };
 
-			multiArray[1, 1] = 9;
+			multiArray[1, 1] = 9; 
 
 			Console.WriteLine("Muniti dimensional Array item at position 2 and array 2: {0}", multiArray[1,1]);
 

@@ -32,6 +32,8 @@ namespace CsharpConcepts
 			Console.WriteLine(name);
 		}
 
+		public abstract void PrintAbstractDetails();
+
 	}
 
 	class InheritanceA : Inheritance
@@ -77,6 +79,11 @@ namespace CsharpConcepts
 		public void Transform(int x, Transformer t)
 		{
 			t(x);
+		}
+
+		public override void PrintAbstractDetails()
+		{
+			
 		}
 
 	}

@@ -1,0 +1,7 @@
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\bin\Debug\UnitTestCsharpOOConcepts.dll
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\bin\Debug\UnitTestCsharpOOConcepts.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\bin\Debug\CsharpConcepts.exe
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\bin\Debug\CsharpConcepts.pdb
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\obj\Debug\UnitTestCsharpOOConcepts.csprojResolveAssemblyReference.cache
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\obj\Debug\UnitTestCsharpOOConcepts.dll
+C:\Users\amanny\Documents\Visual Studio 2012\Projects\Winter\UnitTestCsharpOOConcepts\obj\Debug\UnitTestCsharpOOConcepts.pdb
