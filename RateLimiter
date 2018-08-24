@@ -29,38 +29,38 @@ namespace RateLimiter
         int timeThreshold = 0;
         int requestThreshold = 0;
 
-        Dictionary<Client, int> queue;
+        Dictionary<Client, int> map;
         public RequestCache(int timeThreshold, int requestThreshold)
         {
             this.timeThreshold = timeThreshold;
             this.requestThreshold = requestThreshold;
-            this.queue = new Dictionary<Client, int>();
+            this.map = new Dictionary<Client, int>();
         }
         public void add(Client incomingRequest)
         {
-            this.queue.Add(incomingRequest, 1);
+            this.map.Add(incomingRequest, 1);
         }
 
         public void update(Client searchedRequest)
         {
-            this.queue[searchedRequest]++;
+            this.map[searchedRequest]++;
         }
 
         public void reset(Client searchedRequest, Client incomingRequest)
         {
-            this.queue.Remove(searchedRequest);
+            this.map.Remove(searchedRequest);
             this.add(incomingRequest);
         }
 
         public void rateLimit(Client incomingRequest)
         {
-            Client searchedRequest = this.queue.Keys.Where(item => item.id == incomingRequest.id).FirstOrDefault();
+            Client searchedRequest = this.map.Keys.Where(item => item.id == incomingRequest.id).FirstOrDefault();
             
             if(searchedRequest != null)
             {
                 if((incomingRequest.requestTime - searchedRequest.requestTime).Seconds < this.timeThreshold)
                 {
-                    if(this.queue[searchedRequest] < this.requestThreshold)
+                    if(this.map[searchedRequest] < this.requestThreshold)
                     {
                        this.update(searchedRequest); 
                     }
